@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Dr.Hong Lab.</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="public/cont/js/platform.js"></script>
+<link rel="import" href="public/cont/webcomponents/polymer.html">
+<link rel="import" href="public/cont/webcomponents/controls.html">
+
+   <webaudio-switch id="switch1"   src="public/cont/img/switch_toggle.png"  value="0" max="1" width="0" height="0"></webaudio-switch>
+<h3><a href='http://drsax.dlinkddns.com:8358/onea.html' style="text-decoration:none">NEXT</a></h3>
+</head>
+<style>
+h1 {
+    font-size: 900%;
+}
+h2 {
+    font-size: 500%;
+}
+</style>
+<style>
+  body {
+    background-color:#282828;
+}
+</style>
+<body >
+
+
+
+
+
+  <font  style="position:absolute;left:-100px;top:110px;font-family:courier;" color="white"  >   Mar 15, 2016 | By Dr.Hong |  Interactive multimedia lab. </font>
+
+</font>
+
+
+
+
+
+
+ <br><br><br><br><br><h1  style="color:white;">Dr.</h1><h2  style="position:absolute;color:green;left:160px;top:210px;">Hong  </h>
+
+    <webaudio-knob id="knob1"   style="position:absolute;right:71px;top:16px" src="public/cont/img/vin.png" value="0" max="2000" step="1" diameter="60" sprites="100"  ></webaudio-knob>
+
+
+<h3  style="position:absolute;color:black;left:220px;top:290px;">Media Lab. </h3>
+
+
+
+
+    <h3  style="color:gray;font-family:courier;position:relative;left:1%;top:10px;">Web-music programing | arduino | <br>Interactive multimedia work </h3>
+<h6  style="position:absolute;color:white;left:120px;top:490px;">2016@Copyright Dr.Hong Media Lab.  </h6>
+
+
+<script>
+    adsr();
+function adsr()  {
+var context = new (window.AudioContext)(); // Create audio container
+        osc = context.createOscillator(); // Create sound source
+        osc2 = context.createOscillator(); // Create sound source
+
+        oscamp= context.createGain();
+        ampout= context.createGain();
+         amp2= context.createGain();
+        depth= context.createGain();
+    var b = depth
+    var a = 1.00 - b;
+    var amp22 =  amp2.gain.value * a ;
+         // Create gain node
+
+      osc.connect(oscamp);
+      oscamp.connect(ampout);
+      ampout.connect(context.destination);
+      osc2.connect(amp2);
+      amp2.connect(oscamp.gain);
+      depth.connect(oscamp.gain);
+       osc.frequency.value = 400;
+      osc2.frequency.value = 700;
+      ampout.gain.value = 0.0;
+        amp2.gain.value = 0.5;
+      depth.gain.value = 0.5;
+
+
+ osc.start();
+ osc2.start();
+   }
+ </script>
+
+ <script >
+
+    var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob,false);
+       function knob(data) {
+        var str= 0;
+       str= data.target.value
+        osc.frequency.value  = str;
+         ampout.gain.value  = str/20000;  }
+          var switch1 = document.getElementById('switch1');
+      switch1.addEventListener("change",switch11);
+       function switch11(e) {
+             if(e.target.value=="1") {
+       location.href = 'http://drsax.dlinkddns.com:8358/sample.html';
+                }
+             if(e.target.value=="0") {
+               amp.disconnect(audioContext.destination);
+          } }
+
+
+</script>
+</body>
+</html>

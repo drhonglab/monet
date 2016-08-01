@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	
+	</head>
+	<body>
+		
+  <input type="button"  value="Stop" onclick="init1();">
+			
+			<span id="result"></span><br>
+			<span id="result22"></span><br>
+			<span id="result33"></span><br>
+			    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+	
+		<script src="joystick.js"></script>
+		<script>
+		
+
+
+
+init();
+      function init() {
+
+    audioContext = new(window.AudioContext)();
+    gain = audioContext.createGain();
+    gain.gain.value = 0.1;
+    osc = audioContext.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.value = 315;
+  
+    
+    osc.connect(gain)
+    gain.connect(gain)
+          gain.connect(audioContext.destination);
+   
+    osc.start();
+     
+         
+    
+
+
+}
+			var joystick	= new VirtualJoystick({
+				container	: document.getElementById('container'),
+				mouseSupport	: true,
+			});
+			joystick.addEventListener('touchStart', function(){
+				console.log('down')
+			})
+			joystick.addEventListener('touchEnd', function(){
+				console.log('up')
+			})
+			setInterval(function(){
+			
+				document.getElementById('result').innerHTML= '<b>Result:</b> '
+
+					+ ' dx:'+joystick.deltaX().toFixed(0)
+					+ ' dy:'+joystick.deltaY().toFixed(0)*(-1)
+					+ (joystick.right()	? ' right'	: '')
+					+ (joystick.up()	? ' up'		: '')
+					+ (joystick.left()	? ' left'	: '')
+					+ (joystick.down()	? ' down' 	: '')	
+			}, 1/190 * 1000);
+
+
+
+	 var socket = io();
+
+		setInterval(function(){
+	
+			var str =joystick.deltaX().toFixed(0);
+				
+				   socket.emit('3', str);
+
+		               
+					
+						
+			}, 1);
+
+
+
+		      socket.on('3',function(str){ 
+
+
+      osc.frequency.value = str;
+      document.getElementById('result22').innerHTML= '<b>Result:</b> ' +str;
+     //document.getElementById('').innerHTML = str ;
+    
+
+});
+			
+/////////////////////////////////////////////////////////////
+
+			
+		
+
+  
+
+
+
+
+
+
+
+
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+	</body>
+</html>

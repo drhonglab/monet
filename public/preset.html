@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<p id="demo"> 1</p>
+
+
+<input id="id1" style="position:absolute;left:100px;top:150px" type="number" min="100">
+<input id="id2"  style="position:absolute;left:300px;top:150px" type="number" min="100">
+<button onclick="myFunction()">OK</button>
+
+  <input type="range" style="position:absolute;left:100px;top:100px"id="ver" name="points" step="0.1" min="0" max="100">
+
+   <input type="range" style="position:absolute;left:300px;top:100px"id="ver1" name="points" step="0.1" min="0" max="100">
+
+
+<p id="demo1"  style="position:absolute;left:200px;top:230px" >b</p>
+
+<div id="result" style="position:absolute;left:400px;top:230px" ></div>
+
+
+<script>
+
+ var ver = document.getElementById('ver');
+       ver.addEventListener("change",knob,false);
+
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+ 
+
+
+    document.getElementById("demo").innerHTML =document.getElementById("ver").value ;
+
+
+   document.getElementById("id1").value =document.getElementById("ver").value ;
+
+    document.getElementById("id1").innerHTML =document.getElementById("ver").value ;
+
+
+    document.getElementById("demo1").innerHTML =document.getElementById("id1").value ;
+
+ }
+
+function myFunction() {
+
+   document.getElementById("ver").value =document.getElementById("id1").value ;
+
+    document.getElementById("demo").innerHTML =document.getElementById("id1").value  ;
+    var txt = "";
+    if (document.getElementById("id1").validity.rangeUnderflow) {
+        txt = "Value too small";
+    } else {
+        txt = "Input OK";
+    } 
+
+}
+
+
+</script>
+<script>
+
+ var ver1 = document.getElementById('ver1');
+       ver1.addEventListener("change",knob,false);
+
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+ 
+
+
+    document.getElementById("demo").innerHTML =document.getElementById("ver1").value ;
+
+
+   document.getElementById("id2").value =document.getElementById("ver1").value ;
+
+    document.getElementById("id2").innerHTML =document.getElementById("ver1").value ;
+
+
+    document.getElementById("demo1").innerHTML =document.getElementById("id2").value ;
+
+ }
+
+function myFunction1() {
+
+   document.getElementById("ver1").value =document.getElementById("id2").value ;
+
+    document.getElementById("demo").innerHTML =document.getElementById("id2").value  ;
+    var txt = "";
+    if (document.getElementById("id2").validity.rangeUnderflow) {
+        txt = "Value too small";
+    } else {
+        txt = "Input OK";
+    } 
+
+}
+</script>
+
+<script>
+// Check browser support
+function abc() {
+  
+    localStorage.setItem("a",document.getElementById("id1").value );
+    document.getElementById("result").innerHTML = localStorage.getItem("a");
+
+} 
+
+function abcd() {
+  localStorage.removeItem("a");
+    document.getElementById("result").innerHTML = localStorage.getItem("a");
+} 
+
+function bbb()
+
+ {   document.getElementById("id1").value = localStorage.getItem("a");
+myFunction();}
+
+</script>
+</head>
+<button type="button" onclick=abc();>preset store</button>
+<button type="button" onclick=abcd();>delet preset</button>
+
+<button type="button" onclick=bbb();>recall preset</button>
+</body>
+</html>

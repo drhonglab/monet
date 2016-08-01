@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.bot_container{
+	width:285px;
+	height:420px;
+	margin:0px auto;
+}
+div.bot{
+	position: relative;
+	background: url(bird.png);
+	width: 285px;
+	height: 302px;
+	top: 0px;
+	animation: bot_float ease 2s infinite;
+}
+@keyframes bot_float { 50% { top: 100px; } 100% { top: 0px; } }
+div.bot_shadow{
+	position: relative;
+	height:16px;
+	background: #999;
+	opacity:0.1;
+	border-radius:100%;
+	margin:0px 0px 0px 0px;
+	top:100px;
+	animation: shadow_react ease 6s infinite;
+}
+@keyframes shadow_react { 50% { margin:0px 20% 0px 20%; opacity:0.7; } 100% { margin:0px 0px 0px 0px; opacity:0.1;  } }
+</style>
+</head>
+<body>
+<div class="bot_container">
+  <div class="bot"></div>
+  <div class="bot_shadow"></div>
+</div>
+</body>
+</html>

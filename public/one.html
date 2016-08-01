@@ -1,0 +1,444 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <style>
+ 
+body {
+    background-color:#282828; 
+}
+</style>
+<style>
+h1 {
+    font-size: 2000%;
+}
+h2 {
+    font-size: 800%;
+}
+
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 50%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+
+   
+
+  </head>
+  <body>
+  
+    
+
+       
+ <a href="#" class="toggle toggle-on" onclick="onoff()" value="On" id="onoff"></a> 
+<div class='selector'>
+
+
+  <ul>
+    <li>
+      <input id='c1' type='button' onclick ="aaa();">
+      <label for='c1'>Menu 1</label>
+    </li>
+    <li>
+      <input id='c2' type='checkbox'>
+      <label for='c2'>Menu 2</label>
+    </li>
+    <li>
+      <input id='c3' type='checkbox'>
+      <label for='c3'>Menu 3</label>
+    </li>
+    <li>
+      <input id='c4' type='checkbox'>
+      <label for='c4'>Menu 4</label>
+    </li>
+    <li>
+      <input id='c5' type='checkbox'>
+      <label for='c5'>Menu 5</label>
+    </li>
+    <li>
+      <input id='c6' type='checkbox'>
+      <label for='c6'>Menu 6</label>
+    </li>
+    <li>
+      <input id='c7' type='checkbox'>
+      <label for='c7'>Menu 7</label>
+    </li>
+    <li>
+      <input id='c8' type='checkbox'>
+      <label for='c8'>Menu 8</label>
+    </li>
+  </ul>
+  <button>Click to toggle the menus</button>
+ 
+</div>
+
+
+   
+
+
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
+  <div class="overlay-content">
+
+ 
+ <h1  style="color:white;font-family:impact;position:absolute;left:30%;top:30%">Dr.</h1>
+<h2  style="color:green;font-family:impact;position:absolute;left:30%;top:30%">H</h1>
+  <h2  style="color:white;font-family:impact;position:absolute;left:850px;top:210px">ng</h1>
+    <h3  style="color:gray;font-family:courier;position:absolute;left:400px;top:500px">Web-music programing | arduino | Interactive multi-media work </h3>
+      <h3  style="color:white;font-family:courier;position:absolute;left:1310px;top:50px">Next</h3>
+  
+
+<style>
+html,
+body { height: 100%; }
+
+body {
+  margin: 0;
+  background: linear-gradient(#eeeeee, #cccccc);
+  overflow: hidden;
+}
+
+.selector {
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  width: 250px;
+  height: 250px;
+  margin-top: -70px;
+  margin-left: -70px;
+}
+
+.selector,
+.selector button {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+
+.selector button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: #428bca;
+  border-radius: 50%;
+  border: 50;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  transition: all .1s;
+}
+
+.selector button:hover { background: #3071a9; }
+
+.selector button:focus { outline: none; }
+
+.selector ul {
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  top: -20px;
+  right: -20px;
+  bottom: -20px;
+  left: -20px;
+}
+
+.selector li {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  margin: 0 50%;
+  -webkit-transform: rotate(-360deg);
+  transition: all 0.8s ease-in-out;
+}
+
+.selector li input { display: none; }
+
+.selector li input + label {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  line-height: 1px;
+  margin-left: 0;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+}
+
+.selector li input + label:hover { background: #f0f0f0; }
+
+.selector li input:checked + label {
+  background: #5cb85c;
+  color: white;
+}
+
+.selector li input:checked + label:hover { background: #449d44; }
+
+.selector.open li input + label {
+  width: 100px;
+  height: 100px;
+  line-height: 80px;
+  margin-left: -40px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+</style>
+<style>
+*,
+*:before,
+*:after { box-sizing: border-box; }
+
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  color: #ECEFF1;
+  background-image: radial-gradient(#4f6875, #263238);
+}
+
+.toggle {
+  position: relative;
+    left: 10%;
+  top: 10%;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 60px;
+  color: white;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid #546E7A;
+  background-color: #263238;
+  transition: all 500ms;
+}
+
+.toggle:active { background-color: #1c2429; }
+
+.toggle:hover:not(.toggle-moving):after { background-color: #455A64; }
+
+.toggle:after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+  background-color: #37474F;
+  border: 2px solid;
+  transition: all 500ms;
+}
+
+.toggle-on:after {
+  content: 'On';
+  border-radius: 50px 5px 5px 50px;
+  color: #66BB6A;
+}
+
+.toggle-off:after {
+  content: 'Off';
+  border-radius: 5px 50px 50px 5px;
+  transform: translate(100%, 0);
+  color: #f44336;
+}
+
+.toggle-moving { background-color: #1c2429; }
+
+.toggle-moving:after {
+  color: transparent;
+  border-color: #435862;
+  background-color: #222c31;
+  transition: color 0s, transform 500ms, border-radius 500ms, background-color 500ms;
+}
+
+h1 {
+  font-size: 64px;
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+</style>
+</head>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+
+
+  </body>
+
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<script src="prefixfree.min.js"></script>
+  <script >
+  function aaa(){
+    alert("fdsf");}</script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+window.onload = function(){ 
+   openNav();
+
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+<script>var nbOptions = 8;
+var angleStart = -360;
+
+// jquery rotate animation
+function rotate(li,d) {
+    $({d:angleStart}).animate({d:d}, {
+        step: function(now) {
+            $(li)
+               .css({ transform: 'rotate('+now+'deg)' })
+               .find('label')
+                  .css({ transform: 'rotate('+(-now)+'deg)' });
+        }, duration: 0
+    });
+}
+
+// show / hide the options
+function toggleOptions(s) {
+    $(s).toggleClass('open');
+    var li = $(s).find('li');
+    var deg = $(s).hasClass('half') ? 180/(li.length-1) : 360/li.length;
+    for(var i=0; i<li.length; i++) {
+        var d = $(s).hasClass('half') ? (i*deg)-90 : i*deg;
+        $(s).hasClass('open') ? rotate(li[i],d) : rotate(li[i],angleStart);
+    }
+}
+
+$('.selector button').click(function(e) {
+    toggleOptions($(this).parent());
+});
+
+setTimeout(function() { toggleOptions('.selector'); }, 100);//@ sourceURL=pen.js
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script>
+
+
+
+function onoff(){
+var  a = document.getElementById('onoff').value;
+  if(a == "On"){
+    document.getElementById("onoff").value="Off";
+alert("re11w");
+
+  }else{
+    document.getElementById("onoff").value="On";
+
+alert("dsfdfdfddf")
+  }
+}
+
+$('.toggle').click(function(e) {
+  var toggle = this;
+  
+  e.preventDefault();
+  
+  $(toggle).toggleClass('toggle-on')
+         .toggleClass('toggle-off')
+         .addClass('toggle-moving');
+  
+  setTimeout(function() {
+     
+    $(toggle).removeClass('toggle-moving');
+  }, 200)
+});
+</script>
+
+
+</body>
+</html>

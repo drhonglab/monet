@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+    <title>i have a dream
+    </title>
+  </head>
+
+  <body>
+    <style > 
+#ver{
+   position: absolute;
+   top: 40%;
+   transform: rotate(270deg);
+}
+#ver {
+  -webkit-appearance: none;
+  margin: 10px ;
+  width: 10%;
+}
+#ver:focus {
+  outline: none;
+}
+#ver::-webkit-slider-runnable-track {
+  width: 10%;
+  height: 3px;
+  cursor: pointer;
+  background: gray;
+
+}
+#ver::-webkit-slider-thumb {
+
+  height: 20px;
+  width: 20px;
+  border-radius: 3px;
+  background: black;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.6px;
+}
+
+}
+
+</style>
+    <h1 id="text"> main 1 </h1>
+     <input type="button" value="CLICK "  onclick="text();" />
+    
+   
+
+  <input type="button" value=" see "onclick="see();" />
+
+  <input type="button" value=" hide "onclick="hello();" />
+    
+   <button onclick="onoff()" value="On" id="onoff" >Click me</button>
+
+ 
+
+  <input type="range" id="ver" name="points" step="0.1" min="0" max="100">
+
+  <input type="range" style="position:absolute;left:100px;top:30px" id="ver" name="points" step="0.1" min="0" max="100">
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<p id="name">Web-audio page on</p>
+<p id="demo">b</p>
+<p id="kno">a</p>
+<p id="aaa">a</p>
+<h2 id="player" style="position:absolute;left:400px;top:30px"></h2>
+
+
+    <script>
+
+
+
+
+    var ver = document.getElementById('ver');
+       ver.addEventListener("change",knob33,false);
+
+       function knob33(data) {
+      var = 0;
+       str= data.target.value 
+
+        document.getElementById('kno').innerHTML = str;
+   
+       }
+ 
+   
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+ 
+
+    </script>
+   
+  </body>
+</html>

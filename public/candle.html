@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<input type="range" id ="knob1" value="1" min = "0" max="5">
+<button id= "p" onclick="aa();" >Pause</button>
+<style>
+.hi {
+    width: 0px;
+    height: 130px;
+    background-image: url("candle.png");
+     background-image-size: 80px 60px;
+    
+    -webkit-animation: play 0.4s steps(3)infinite;
+    
+}
+@-webkit-keyframes play {
+   from { background-position:  0px; }
+     to { background-position: -300px; }
+}
+
+</style>
+</head>
+<body>
+
+
+
+<img  src="http://s.cdpn.io/79/sprite-steps.png" />
+<div id="p1" class="hi"></div>
+<p id="p2">Red</p>
+
+
+
+</body>
+
+<script>
+
+function  aa()
+
+{
+
+  document.getElementById('p1').style.width="100px";
+} 
+  var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob);
+       function knob(data) {
+        var str= 0;
+  
+ str= data.target.value ; 
+var c = str*0.1;
+       
+document.getElementById('p1').style.webkitAnimation=" play "+c+"s steps(3) infinite";
+document.getElementById('p2').innerHTML  = str ;}
+</script>
+</html>

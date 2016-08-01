@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!--   
+2016.4.13  by euyshick, Hong 
+- interactive web-music network project "drsax"
+- web adress is "drsax.kr"
+- you can play with your friends on your smart phone or pc, mac, that wherever you can connect your friends realtime !! you can play the music and talk
+ -->
+
+ <!-- knob js file  -->
+
+
+    <script src="cont/js/platform.js"></script>
+    <link rel="import" href="cont/webcomponents/polymer.html">
+    <link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+
+ <!-- main title  -->
+
+    <title>INTERACTIVE WEB-MUSIC NETWORK</title>
+
+</head>
+
+
+
+
+
+ <!-- body start  -->
+
+
+
+<body>
+
+ <!-- button -->
+
+
+
+   <style>
+    body {
+            background-color: gray;
+        }
+        
+        .ver {
+            position: absolute;
+            top: 80%;
+            transform: rotate(270deg);
+        }
+        
+        .ver {
+            -webkit-appearance: none;
+            margin: 0px;
+            width: 120px;  /*  slide high*/
+        }
+        
+        .ver:focus {
+            outline: none;
+        }
+        
+         .ver::-webkit-slider-runnable-track {
+            width: 7px;
+            height: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+            background: black;
+        }
+        
+        .ver::-webkit-slider-thumb {
+            height: 50px;
+            width: 50px;
+         
+           background:url(steal.png);
+           background-repeat:no-repeat;
+            transform: rotate(90deg);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -20.6px;
+         box-shadow: 3px 3px 5px gray;
+            border-radius: 8px;
+        }
+    }
+    </style>
+
+<style>
+.button1 {
+    position: relative;
+    background-color: black;
+    border: none;
+    font-size: 16px;
+    color: #1a1a1a;
+    padding: 5px 1px;
+    width: 60px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+       border-radius: 8px;
+    
+}
+.button1:after {
+    content: "";
+    background: white;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.6s
+}
+.button1:active:after {
+     background-color:radial-gradient(circle, white, gray,black);
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.button1:hover {
+    background: radial-gradient(circle, white, black);/* Green */
+  
+}
+.button2:hover {
+    background: radial-gradient(circle, white,  #3399ff);/* Green */
+  
+}
+.button3:hover {
+    background: radial-gradient(circle, white,  #4dff4d);/* Green */
+  
+}
+.button2 {background-color: #3399ff;}
+.button3 {background-color: #4dff4d;}
+.button4 {font-size: 20px;}
+.button5 {font-size: 24px;}
+</style>
+
+
+
+
+
+
+
+ <!--   slide   -->
+
+ <style>
+    body {
+            background-color: black;
+        }
+        
+        .ver {
+            position: absolute;
+            top: 30%;
+            transform: rotate(270deg);
+        }
+        
+        .ver {
+            -webkit-appearance: none;
+            margin: 0px;
+            width: 120px;  /*  slide high*/
+        }
+        
+        .ver:focus {
+            outline: none;
+        }
+        
+         .ver::-webkit-slider-runnable-track {
+            width: 7px;
+            height: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+            background: black;
+        }
+        
+        .ver::-webkit-slider-thumb {
+            height: 30px;
+            width: 30px;
+            
+            background: #1a1a1a;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7.6px;
+           
+        }
+    }
+    </style>
+
+
+<!--  cloudd -->
+
+
+<style>
+#img1 {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter:contrast(100%); 
+    position: relative;
+   
+}
+</style>
+
+
+<style>
+#cloud {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter: contrast(100%); 
+      -webkit-animation: cloud 107s infinite;
+      animation-direction: alternate; /* Chrome, Safari, Opera */
+   
+       }
+
+
+@-webkit-keyframes cloud {
+                                0%{left: 256px;}
+                                  50% {left: 846px;}
+                                        100% {left: 306px;}
+
+                          }
+</style>
+
+
+
+<!--  beach -->
+
+<style>
+#img3 {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter: grayscale(0%); 
+    position: relative;
+   
+      }
+</style>
+
+
+
+
+
+<!--  sea -->
+<style>
+#img4 {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter: contrast(100%); 
+      -webkit-animation: sea 7s infinite;
+      animation-direction: alternate; /* Chrome, Safari, Opera */
+   
+}
+@-webkit-keyframes sea {
+   0%{left: 86px;}
+    50% {left: 66px;}
+      100% {left: 86px;}
+}
+</style>
+
+
+
+
+
+
+<!--  boat -->
+
+<style>
+#boat {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter: grayscale(0%); 
+      -webkit-animation: boat 10s infinite;
+      animation-direction: alternate; /* Chrome, Safari, Opera */
+   
+}
+@-webkit-keyframes boat {
+                            0%{left: 936px;top:430px;}
+                                  50% {left: 946px;top:433px;}
+                                        100% {left: 936px;top:430px;}
+                           }
+</style>
+
+
+
+
+
+
+
+<style>
+#boat1 {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter: grayscale(0%); 
+      -webkit-animation: boatone 10s infinite;
+      animation-direction: alternate; /* Chrome, Safari, Opera */
+   
+}
+@-webkit-keyframes boatone {
+   0%{left:1030px;top:450px}
+    50% {left:1000px;top:450px}
+      100% {left:1030px;top:450px}
+}
+</style>
+
+
+
+<style>
+#boat2 {
+    -webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+      -webkit-filter: grayscale(0%); 
+      -webkit-animation: boattwo 10s infinite;
+      animation-direction: alternate; /* Chrome, Safari, Opera */
+   
+}
+@-webkit-keyframes boattwo {
+   0%{left:1070px;top:470px }
+    50% {left:1067px;top:470px }
+      100% {left:1070px;top:470px }
+}
+</style>
+
+
+
+
+
+
+
+<style>
+#boat3 {
+    -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
+      -webkit-filter: grayscale(100%); 
+      -webkit-animation: boatthree 6s infinite;
+      animation-direction: alternate; /* Chrome, Safari, Opera */
+   
+}
+@-webkit-keyframes boatthree {
+   0%{left:1190px;top:370px}
+    50% {left:1170px;top:370px}
+      100% {left:1190px;top:370px}
+}
+</style>
+
+
+
+
+
+
+
+
+<!-- button -->
+<button class="button1"  id="start" onclick="audio.play();" >Play</button><br>
+<button class="button1"   onclick="audio.pause();" >Pause</button><br>
+<button class="button1"  id= "mute"  >Mute</button><br>
+ <button class="button1"  onclick="text();">Talk</button>
+
+ 
+
+
+<!--  canvas dial  2 -->
+    <webaudio-knob id="monet3" style=" position:absolute;left :527px;  top: 727px; " src="cont/img/dde.png" value="100" max="200" step="1" diameter="70" sprites="30"></webaudio-knob>
+    <webaudio-knob id="monet33" style=" position:absolute;left :610px;  top: 727px; " src="cont/img/dde.png" value="100" max="200" step="1" diameter="70" sprites="30"></webaudio-knob>
+<!--  canvas dial  3 -->
+    <webaudio-knob id="monet4" style=" position:absolute;left :927px;  top: 727px; " src="cont/img/dde.png" value="1000" max="200" step="1" diameter="70" sprites="30"></webaudio-knob>
+    <webaudio-knob id="monet44" style=" position:absolute;left :1006px;  top: 727px; " src="cont/img/dde.png" value="1000" max="200" step="1" diameter="70" sprites="30"></webaudio-knob>
+<!--  canvas dial  4 -->
+    <webaudio-knob id="boat11" style=" position:absolute;left :1325px;  top: 727px; " src="cont/img/dde.png" value="2" max="100" step="1" diameter="70" sprites="30"></webaudio-knob>
+    <webaudio-knob id="knob1" style=" position:absolute;left :1405px;  top: 727px; " src="cont/img/dde.png" value="0" max="2000" step="1" diameter="70" sprites="30"></webaudio-knob>
+<!-- canvas2   -->
+
+
+
+
+
+
+
+<!--  main background image  -->
+
+<img id="img" src="monet.png" style="width:1430px;height:800px;position:absolute;left:80px;top:20px" >
+
+
+
+
+
+<!--  cloud  -->
+<img id="img1" src="monet1.png"  style="width:1178px;height:330px;position:absolute;left:230px;top:130px" >
+<img id="cloud" src="cloud.png"  style="width:678px;height:130px;position:absolute;left:330px;top:230px" >
+
+
+
+
+
+
+<!--  beach  -->
+<img id="img3" src="monet3.png" style="width:1128px;height:336px;position:absolute;left:230px;top:370px" >
+
+
+
+<!-- sea -->
+<img id="img4" src="monet4.png"  style="width:1478px;height:257px;position:absolute;left:256px;top:448px" >
+
+
+
+
+<!-- boat-->
+<img id="boat" src="boat.png"  style="width:160px;height:80px;position:absolute;left:930px;top:330px" >
+<img id="boat1" src="boat1.png"  style="width:150px;height:70px;position:absolute;left:1030px;top:450px" >
+<img id="boat2" src="boat1.png"  style="width:180px;height:100px;position:absolute;left:1070px;top:470px" >
+<img id="boat3" src="boat1.png"  style="width:200px;height:130px;position:absolute;left:1160px;top:370px" >
+
+
+
+
+<img id="frame" src="frame.png"  style="width:145px;height:732px;position:absolute;left:1356px;top:24px" >
+
+
+
+
+<!-- tlak box  -->
+<h1 id="text" style="position:absolute;left:500px;top:610px;font-family:cursive;"> Play the light of Monet</h1>
+<h1 id="player" style="position:absolute;left:1090px;top:610px;font-family:cursive;"></h1>
+<!--<p id="aa" style="position:absolute;left:1090px;top:610px;font-family:cursive;">gfsgfsg</p>
+
+
+
+
+<!-- iframe canvas -->
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<script>
+window.addEventListener("load", initAudioPlayer, false);
+window.addEventListener("load", initAudioPlayer1, false);
+
+
+function initAudioPlayer(){
+
+
+        audio = new Audio();
+        audio.src = "melody.mp3";
+        audio.playbackRate = 1;
+         audio.volume=1;
+    
+
+
+        audio2 = new Audio();
+        audio2.src = "piano.mp3";
+        audio2.playbackRate = 1;
+         audio2.volume=0.7;
+
+
+
+        audio3 = new Audio();
+        audio3.src = "bass.mp3";
+      
+        audio3.playbackRate = 1;
+         audio3.volume=0.4;
+
+
+
+
+        audio4 = new Audio();
+        audio4.src = "drum.mp3";
+        audio4.playbackRate = 1;
+         audio4.volume=0.5;
+
+///////////////////  solo /////////
+
+     audioContext = new AudioContext();
+    amp = audioContext.createGain();
+     amp2 = audioContext.createGain();
+       amp3 = audioContext.createGain();
+    lowpass =audioContext.createBiquadFilter();
+    lowpass2 =audioContext.createBiquadFilter();
+        lowpass3 =audioContext.createBiquadFilter();
+           lowpass4 =audioContext.createBiquadFilter();
+            lowpass5 =audioContext.createBiquadFilter();
+    osc = audioContext.createMediaElementSource(audio);
+        osc2 = audioContext.createMediaElementSource(audio2);
+         osc3 = audioContext.createMediaElementSource(audio3);
+ osc4 = audioContext.createMediaElementSource(audio4);
+  osc5 = audioContext.createOscillator();
+ osc6 = audioContext.createOscillator();
+
+ /////////////melody///////
+
+
+    lowpass.frequency.value = 437;
+        lowpass.Q.value  = 10; 
+         amp.gain.value = 0.6;
+
+
+     osc.connect(lowpass);
+    lowpass.connect(amp);
+   
+//////////////////////////// piano /////////////
+
+
+   lowpass2.frequency.value = 30037;
+        lowpass2.Q.value  = 10; 
+        
+
+
+    osc2.connect(lowpass2);
+    lowpass2.connect(amp);
+
+
+
+
+
+
+//////////////////////////// bass  /////////////
+
+   lowpass3.frequency.value = 30037;
+        lowpass3.Q.value  = 10; 
+        
+
+
+    osc3.connect(lowpass3);
+    lowpass3.connect(amp);
+    
+
+
+    //////////////////////////// drum /////////////
+
+   lowpass4.frequency.value = 30037;
+        lowpass4.Q.value  = 10; 
+        
+
+
+    osc4.connect(lowpass4);
+    lowpass4.connect(amp);
+
+
+////////////streo out /////////////
+
+
+
+
+
+    ////keyboard ////
+
+
+ 
+      osc5.connect(amp2); 
+      osc6.connect(amp3); 
+      amp3.connect(osc5.frequency);
+     
+       osc5.frequency.value = 1400;
+      osc6.frequency.value =73;
+      amp2.gain.value = 0;
+        amp3.gain.value = 17;
+
+
+
+            osc5.start(0);
+              osc6.start(0);
+
+
+ 
+
+
+           amp.connect(audioContext.destination);
+               amp2.connect(audioContext.destination);
+ 
+
+
+osc.start(0);
+ osc2.start(0);
+  osc3.start(0);
+  osc4.start(0);
+ 
+   
+
+                         }     
+
+
+
+
+  
+
+
+function initAudioPlayer1(){
+
+        audio1 = new Audio();
+        audio1.src = "wave.wav";
+        audio1.loop = false;
+        audio1.playbackRate = 1;
+         audio1.volume=0.2;
+     
+
+}
+
+
+  ////////////////////mute,  //////////////
+
+mutebtn = document.getElementById("mute");
+mutebtn.addEventListener("click", mute);
+    
+    function mute(){
+        if(audio.muted){
+            audio.muted = false;
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        else {
+            audio.muted = true;
+           // mutebtn.style.background = "url(images/speaker_muted.png) no-repeat";
+             }
+                  }
+
+
+
+
+
+ function mute2(){
+        if(audio2.muted){
+            audio2.muted = false;
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        else {
+            audio2.muted = true;
+           // mutebtn.style.background = "url(images/speaker_muted.png) no-repeat";
+             }
+                  }
+
+
+
+ function mute3(){
+        if(audio3.muted){
+            audio3.muted = false;
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        else {
+            audio3.muted = true;
+           // mutebtn.style.background = "url(images/speaker_muted.png) no-repeat";
+             }
+                  }
+
+
+
+
+ function mute4(){
+        if(audio4.muted){
+            audio4.muted = false;
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        else {
+            audio4.muted = true;
+           // mutebtn.style.background = "url(images/speaker_muted.png) no-repeat";
+             }
+                  }
+////////////////////pause //////////////
+
+var p = document.getElementById("p");
+p.addEventListener("click",playPause);
+    
+    function playPause(){
+
+
+        if(audio.paused){
+            audio.play();
+            
+            //playbtn.style.background = "url(images/pause.png) no-repeat";
+                        }
+         else {
+            audio.pause();
+           // playbtn.style.background = "url(images/play.png) no-repeat";
+              }
+                       }
+
+
+</script>
+
+<script>
+
+
+
+
+
+
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+<script>
+
+
+    var socket = io();
+
+
+
+/////////////// sky control/////////
+
+
+
+    //////////speed/////////////
+
+      socket.on('9',function(str){            
+
+          var c = str/40;
+          lowpass.frequency.value  = str*10;
+            lowpass.Q.value  = str/10; 
+                //document.getElementById('aa').innerHTML = str ;
+                document.getElementById('img1').style.webkitFilter =" contrast("+(c+150)+"%)";
+               document.getElementById('cloud').style.webkitFilter =" contrast("+(c+150)+"%)";
+                           });
+
+  //////////volume/////////////
+      socket.on('8',function(c){ 
+
+        audio.volume=c/200;
+         var   a = c/100;
+
+             //document.getElementById('').innerHTML = str ;
+             document.getElementById('img1').style.webkitFilter =" brightness("+(a*35+60)+"%)";
+            document.getElementById('cloud').style.webkitFilter =" brightness("+(a*35+60)+"%)";
+                          });
+
+
+
+
+
+
+
+/////////////// start /////////
+
+
+
+
+
+       socket.on('18', function(str){ 
+     
+         if(str=="0") {
+             audio.play();
+             audio2.play();
+             audio3.play();
+             audio4.play();
+                       }
+     
+                               });
+///////////////// stop ////////
+  
+         socket.on('star', function(){ 
+
+            audio.pause();
+            audio.src = audio.src;
+
+
+                  audio2.pause();
+            audio2.src = audio2.src;
+
+
+                  audio3.pause();
+            audio3.src = audio3.src;
+
+
+                  audio4.pause();
+            audio4.src = audio4.src;
+
+location.reload();
+           // playbtn.style.background = "url(images/play.png) no-repeat";
+            });
+
+/////////////////mute///////////////////////
+ 
+  socket.on('6', function(str){ 
+
+     if(str=="0"){
+           mute();
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+     });
+
+
+
+
+ 
+  socket.on('21', function(str){ 
+
+     if(str=="0"){
+           mute2();
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        });
+
+
+
+  socket.on('22', function(str){ 
+
+     if(str=="0"){
+           mute3();
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        });
+
+
+
+
+  socket.on('23', function(str){ 
+
+     if(str=="0"){
+           mute4();
+            //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                        } 
+        });
+
+///////////////// wave sound 1///////////////
+
+
+socket.on('5', function(str){ 
+     
+      if(str=="0")     {
+         audio1.src = "seawave.wav";
+        audio1.play();
+        document.getElementById('img4').style.webkitAnimation="sea "+(str+2)+"s infinite";
+          wavetime();      
+                        }
+     
+        });
+
+/////////////////  sound 2 ///////////////
+socket.on('7', function(str){ 
+     
+      if(str=="0")     {
+
+         audio1.src = "boat.wav";
+        
+        audio1.play();
+       
+           
+                        }
+     
+        });
+/////////////////  sound 2 ///////////////
+socket.on('11', function(str){ 
+     
+      if(str=="0")     {
+
+         audio1.src = "cym.wav";
+           audio1.volume=0.6;
+        audio1.play();
+       
+           
+                        }
+     
+        });
+
+
+function wavetime() {
+
+
+
+    setTimeout(function() {
+
+      document.getElementById('img4').style.webkitAnimation="sea 7s infinite";
+
+                          }, 
+          4000);
+
+
+                     }
+
+
+
+/////////////////  end ///////////////
+
+</script>
+
+
+
+
+
+
+
+
+<script>///////////// monet 2 / piano ////////////////////////
+
+
+  var monet3 = document.getElementById('monet3');
+       monet3.addEventListener("change",knob_3);
+       function knob_3(data) {
+        var str= 0;
+  
+ str= data.target.value ; 
+var c = str;
+       
+document.getElementById('img3').style.webkitFilter =" grayscale("+c+"%)";
+}
+      socket.on('20',function(str){ 
+
+
+   var c = str;
+
+   
+   lowpass2.frequency.value = str*10;
+   lowpass2.Q.value  = str/10; 
+       
+document.getElementById('img3').style.webkitFilter =" grayscale("+c+"%)";
+});
+
+
+
+
+
+
+
+
+
+
+   ///////////////////////// brightness,piano vloume//////////
+
+
+
+  var monet33 = document.getElementById('monet33');
+       monet33.addEventListener("change",knob_33);
+       function knob_33(data) {
+        var str= 0;
+  
+ str= data.target.value ; 
+var c = str;
+       
+document.getElementById('img3').style.webkitFilter ="brightness("+c+"%)";
+}
+      socket.on('19',function(str){ 
+   var c = str;
+        audio2.volume=c/200;
+document.getElementById('img3').style.webkitFilter ="brightness("+(c*0.35+90)+"%)";
+});
+
+
+
+
+      /////////////////keyboard  ///////////
+
+      socket.on('31',function(str){ 
+var  str;
+
+//osc5.frequency.value = str;
+ osc5.frequency.value = str*10;
+
+
+});
+
+  /////////////////keyboard  note ///////////
+
+
+
+
+      socket.on('30',function(note){ 
+   var note;
+
+
+      if (note == "1") {
+            amp2.gain.value = 0.3;
+         
+
+        }
+        if( note == "0") {
+            amp2.gain.value = 0;
+        }
+
+   
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+<script>  /////////////////////////  monet3 brightness, bass  vloume//////////
+
+
+
+
+
+  var monet4 = document.getElementById('monet4');
+       monet4.addEventListener("change",knob_3);
+       function knob_3(data) {
+        var str= 0;
+  
+ str= data.target.value ; 
+var c = str;
+       
+document.getElementById('img4').style.webkitFilter ="contrast("+c+"%)";
+}
+
+
+
+
+
+      socket.on('16',function(str){ 
+   var c = str;
+
+        lowpass3.frequency.value = str*10;
+   lowpass3.Q.value  = str/10; 
+       
+document.getElementById('img4').style.webkitFilter ="contrast("+(c*0.35+90)+"%)";
+});
+
+
+
+
+
+
+
+  var monet44 = document.getElementById('monet44');
+       monet44.addEventListener("change",knob_44);
+       function knob_44(data) {
+        var str= 0;
+  
+ str= data.target.value ; 
+var c = str;
+       
+     
+document.getElementById('img4').style.webkitFilter ="brightness("+(c*0.35+90)+"%)";
+}
+
+
+
+
+      socket.on('15',function(str){ 
+   var c = str;
+
+    audio3.volume=c/200;
+       
+document.getElementById('img4').style.webkitFilter ="brightness("+(c*0.35+90)+"%)";
+});
+
+
+
+
+
+
+//////////////////////////monet4 . drum ///////////////////////////////////
+
+
+
+
+
+
+var boat1 = document.getElementById('boat1');
+    boat1.addEventListener("change",boat_1);
+
+function boat_1(data) {
+
+        var str= 0;
+        str= data.target.value ; 
+         var c = str*0.1;
+       
+         document.getElementById('boat').style.webkitAnimation=" boat "+c+"s infinite";  
+          document.getElementById('p2').innerHTML  = str ;
+
+                                }
+
+
+
+
+
+      socket.on('12',function(str){ 
+   var c = str;
+       
+   lowpass4.frequency.value  = str;
+            lowpass4.Q.value  = str/20; 
+
+
+            document.getElementById('boat').style.webkitFilter ="brightness("+(c*0.50)+"%)";
+         document.getElementById('boat1').style.webkitFilter ="brightness("+(c*0.50)+"%)";
+});
+         
+
+
+
+
+            socket.on('13',function(str){ 
+   var c = str;
+        audio4.volume=c/200;
+
+
+        document.getElementById('boat3').style.webkitFilter ="brightness("+(c*0.35+60)+"%)";
+document.getElementById('boat2').style.webkitFilter ="brightness("+(c*0.35+60)+"%)";
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+/////////////// text send /////////
+  
+
+    function text() {
+        var text;
+        text = prompt(" Play the light of Monet");
+        socket.emit('10', text);
+                     
+                     }
+
+
+          socket.on('10', function(text) {
+            document.getElementById("text").innerText = text;
+                    });
+
+
+    ///////////////////////////////////////////////
+    //socket.on('id',function(id){ 
+    //document.getElementById("aaa").innerText =;
+    //});
+
+
+    socket.on('change name', function(name) {
+        document.getElementById("player").innerText = " " + name + " " + "players";
+    });
+    socket.on('change name', function(minus) {
+        document.getElementById("player").innerText = " " + minus + " " + "players";
+    });
+    ///////////////////////////////////////////////////////////////////////////////
+  
+
+
+
+
+</script>
+
+
+
+
+</html>

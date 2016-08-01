@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+
+
+<style>
+#ball{
+  background: url(bird.png);
+  width: 250px;
+  height: 250px;
+    animation: ball-bounce  0.2s steps(8) infinite;
+
+}
+@keyframes ball-bounce {
+  from { background-position: 0px; }
+  to { background-position: -300px; }
+}
+@-webkit-keyframes ball-bounce {
+  from { background-position: 0px; }
+  to { background-position: -300px; }
+}
+</style>
+<div id="ball"></div>
+<div id="adam"></div>
+<button id="startbtn">Start</button>
+<button id="stopbtn">Stop</button>
+<!--        -->
+   <body>
+
+
+
+
+
+
+    <script>
+
+
+
+startbtn.addEventListener("click", function(){
+  ball.style.animation = "ball-bounce 6s steps(6) infinite";
+  ball.style.webkitAnimation = "ball-bounce 2s steps(6) infinite";
+});
+stopbtn.addEventListener("click", function(){
+  ball.style.animation = "";
+  ball.style.webkitAnimation = "";
+});
+
+ 
+
+    </script>
+   
+  </body>
+</html>

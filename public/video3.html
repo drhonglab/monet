@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<title>getUserMedia</title>
+
+
+
+<style>
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#player {
+  width: 50%;
+  height: 50%;
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+
+
+
+
+      <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+
+
+ var socket = io();
+
+
+
+
+socket.on('10', function(str){ 
+     
+    document.querySelector("#player1").src= str;
+  
+
+
+
+
+
+     
+        });
+
+
+</script>
+
+
+
+
+
+
+  <video id="player1" autoplay ="true" ></video>
+
+
+
+</body>
+</html>

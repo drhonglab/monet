@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<input id="id1" type="number" value="20" min="100">
+<button onclick="myFunction()">OK</button>
+
+  <input type="range" id="ver" name="points" value= "4" step="0.1" min="0" max="100">
+
+<p id="demo">a</p>
+
+<script>
+
+ var ver = document.getElementById('ver');
+       ver.addEventListener("change",knob33,false);
+
+       function knob33(data) {
+      var = 0;
+       str= data.target.value ;
+
+    
+           document.getElementById('ver').innerHTML = str;
+   
+       }
+
+
+</script>
+
+</body>
+</html>

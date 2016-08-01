@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+ 
+body {
+    background-color:#282828; 
+}
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+    <style>
+   
+      #jb-header {
+             width: 670px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 2px solid #484848;
+        border-radius: 25px;
+      }
+      #jb-content {
+        width: 670px;
+      
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 2px solid #484848;
+          border-radius: 25px;
+      }
+      #jb-sidebar {
+        width: 670px;
+      
+        padding: 20px;
+        margin-right: 0px;
+        float: right;
+        border: 1px solid #484848;
+         border-radius: 25px;
+      }
+   
+      @media screen and (max-width:480px) {
+        #jb-header {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+  
+      <div id="jb-header">
+      
+     <p style="color:white;" >   &nbsp; Interactive Web-Music ensemble System </p> 
+               </div>
+ 
+
+
+
+
+
+
+
+  <div id="jb-content">
+      
+     <p style="color:white;" >   &nbsp;  Play the light of MONET </p> 
+
+    
+
+
+<div id="London" class="tabcontent">
+  <h2>Soloist</h2>
+  <a href='http://drsax.dlinkddns.com:8358/monet1cont.html' style="color:white;text-decoration:none;">Go to controller</a> 
+</div>
+
+
+
+
+<div id="Paris" class="tabcontent">
+  <h2>Pianist</h2>
+  <a href='http://drsax.dlinkddns.com:8358/monet2cont.html' style="color:white;text-decoration:none;">Go to controller</a> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h2>Bassist</h2>
+  <a href='http://drsax.dlinkddns.com:8358/monet3cont.html' style="color:white;text-decoration:none;">Go to controller</a>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h2>Drummer</h2>
+  <a href='http://drsax.dlinkddns.com:8358/monet4cont.html' style="color:white;text-decoration:none;">Go to controller</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+   
+
+     
+ 
+
+
+
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Enter</a>
+  <div class="overlay-content">
+  
+    <a href="">Feel free to enjoy</a>
+
+  </div>
+    
+
+
+      <script>
+<script>
+window.onload = function(){ 
+   openNav();
+  openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+    
+
+</html>

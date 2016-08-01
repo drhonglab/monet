@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<title>getUserMedia</title>
+
+
+<canvas id="canvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+ 
+</canvas>
+   <button onclick="stop()">off </button>
+<style>
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#player {
+  width: 10%;
+  height: 10%;
+}
+</style>
+
+</head>
+
+<body>
+
+
+      <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+
+
+ var socket = io();
+
+hi();
+function hi(){
+
+
+var c = document.getElementById("canvas");
+var context = c.getContext("2d");
+
+
+  var media = { audio: false, video: true };
+
+  if (!navigator.getUserMedia) {
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
+  }
+
+  navigator.getUserMedia(media, success, function(e) {
+    console.log(e);
+  });
+
+  function success(stream){
+
+   var str = window.URL.createObjectURL(stream);
+
+
+       
+
+}
+
+
+setInterval(function(){ 
+// 0.1초에 한 번씩 canvas에 그려준다
+  context.drawImage(str, 0, 0, 123, 123);
+
+
+}, 10);
+
+
+
+}
+
+
+socket.on('10', function(str){ 
+     
+    document.querySelector("#player1").src= str;
+  
+     
+        });
+function stop(){
+
+stream.getTracks()[0].stop();
+}
+
+</script>
+
+
+
+  <video id="player1" autoplay="true"></video>
+
+</body>
+</html>

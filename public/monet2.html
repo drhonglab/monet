@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+
+
+    <!--web audio knobe file -->
+<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+ 
+
+
+<style>
+.button1 {
+    position: relative;
+    background-color: black;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 20px 6px;
+    width: 60px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+       border-radius: 8px;
+       box-shadow: 5px 5px 5px gray;
+}
+.button1:after {
+    content: "";
+    background: white;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.6s
+}
+.button1:active:after {
+     background-color:radial-gradient(circle, white, gray,black);
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.button1:hover {
+    background: radial-gradient(circle, white, black);/* Green */
+  
+}
+.button2:hover {
+    background: radial-gradient(circle, white,  #3399ff);/* Green */
+  
+}
+.button3:hover {
+    background: radial-gradient(circle, white,  #4dff4d);/* Green */
+  
+}
+.button2 {background-color: #3399ff;}
+.button3 {background-color: #4dff4d;}
+.button4 {font-size: 20px;}
+.button5 {font-size: 24px;}
+</style>
+
+
+
+ <style>
+    body {
+            background-color: black;
+        }
+        
+        .ver {
+            position: absolute;
+            top: 30%;
+            transform: rotate(270deg);
+        }
+        
+        .ver {
+            -webkit-appearance: none;
+            margin: 0px;
+            width: 120px;  /*  slide high*/
+        }
+        
+        .ver:focus {
+            outline: none;
+        }
+        
+         .ver::-webkit-slider-runnable-track {
+            width: 7px;
+            height: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+            background: black;
+        }
+        
+        .ver::-webkit-slider-thumb {
+            height: 30px;
+            width: 30px;
+            
+            background: #1a1a1a;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7.6px;
+           
+        }
+    }
+    </style>
+
+
+<!--css backgound -->
+    <style>
+
+body {
+    background-color:black; 
+
+}
+/*back ground */
+
+</style>
+
+  
+
+
+  </head>
+
+
+
+
+
+  <!--body start -->
+  
+
+  <body>
+
+
+
+  <!--moniter talk box -->
+
+  <!--head section -->
+
+<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+     <p style="color:white;left:500%" > &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Ampulitede Modulation </p> 
+
+
+    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<button class="button1" type="button"  id="switch4" value="0" max= "1" >start</button>
+  <input class="button1" type="button"  value="Stop" onclick="qqqq();">
+   <button class="button1 button2" type="button"  id="switch4" value="0" max= "1" >what</button>
+   <button class="button1  button3"  onclick="text();">Talk</button>
+
+ <!-- <input class="button1" type="button" id="switch3" value="0" max= "0">  -->
+
+  
+ 
+
+    <webaudio-knob id="monet2" style=" position:absolute;left :527px;  top: 327px; " src="cont/img/dde.png" value="100"
+      min="0"  max="200" step="1" diameter="70" sprites="30"></webaudio-knob>
+    <webaudio-knob id="monet22" style=" position:absolute;left :610px;  top: 327px; " src="cont/img/dde.png" value="100" max="200" step="1" diameter="70" sprites="30"></webaudio-knob>
+
+
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp; <button class="button1" type="button"  id="switch4" value="0" max= "1" >start</button>
+  <input class="button1" type="button"  value="Stop" onclick="qqqq();">
+   <button class="button1 button2" type="button"  id="switch4" value="0" max= "1" >what</button>
+   <button class="button1  button3"  onclick="text();">Talk</button>
+<br><br>
+    
+        
+
+
+
+
+</body>
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+  <script >
+
+
+   
+ var socket = io();
+
+
+
+
+
+ function text() {
+
+        var text;
+
+        text = prompt(" hi Dr.Hong ");
+
+
+        socket.emit('10', text);
+
+    }
+
+
+    socket.on('10', function(text) {
+        document.getElementById("text").innerText = text;
+
+
+
+    });
+
+////////////////////////////////////////////
+
+  var monet2 = document.getElementById('monet2');
+       monet2.addEventListener("change",knob_2);
+       function knob_2(data) {
+        var str= 0;
+  
+           str= data.target.value ; 
+             var c = str;
+
+            socket.emit('20', str);
+          
+
+}
+
+
+
+      ///////////////
+
+  var monet222 = document.getElementById('monet22');
+       monet222.addEventListener("change",knob_22);
+
+       function knob_22(data) {
+        var str= 0;
+  
+         str= data.target.value ; 
+         var c = str;
+       socket.emit('19', str);
+                 
+
+}
+
+  
+
+
+
+
+//////////////////////////////////
+
+
+ 
+
+
+
+ 
+
+  
+
+//////////////////////////////////// input socket network ////////////////////
+
+ //  var switch3 = document.getElementById('switch3');
+ //       switch3.addEventListener("click",ddd,false);
+
+
+//  function ddd(e) {
+//        str=1;
+ //     str = e.target.value
+
+ //     socket.emit('17', str);
+
+ //     }
+  //    socket.on('17', function(str){ 
+     
+
+ //     if(str=="0") {
+
+  //        aa();
+ //               }
+     
+  //    });
+
+
+  /////////////////////////////////////   button socket network ///////////
+
+
+
+    var switch4 = document.getElementById('switch4');
+        switch4.addEventListener("click",dd1,false);
+
+
+  function dd1(e) {
+        str=1;
+      str = e.target.value
+
+      socket.emit('18', str);
+
+  }
+      socket.on('18', function(str){ 
+     
+
+      if(str=="0") {
+
+          aa();
+                }
+     
+      });
+
+      ///////////////// socket off ////////
+
+    function qqqq(){
+         str = 7;
+
+
+       socket.emit('star', 'data');
+      }
+
+      socket.on('star', function(){ 
+
+
+            if(str=="7") {
+
+       bb();
+                }
+     
+      });
+
+      
+  
+
+
+
+
+
+
+  
+</script>
+
+ 
+
+
+</html>

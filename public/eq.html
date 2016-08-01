@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="canonical" href="http://codepen.io/andremichelle/pen/RNwamZ" />
+
+
+</head><body>
+<h2>Web Audio Api Equalizer</h2>
+
+    <label>Low Gain</label>
+    <input type="range" value="100" step="1" min="0" max="100" oninput="changeGain(this.value, 'lowGain');"></input>
+
+    <label>Mid Gain</label>
+    <input type="range" value="100" step="1" min="0" max="100" oninput="changeGain(this.value, 'midGain');"></input>
+
+    <label>High Gain</label>
+    <input type="range" value="100" step="1" min="0" max="100" oninput="changeGain(this.value, 'highGain');"></input>
+
+
+<script>
+
+var audioContext = new AudioContext();
+
+    gain = audioContext.createGain();
+    gain.gain.value = 0.1;
+    osc = audioContext.createOscillator();
+   
+    osc.frequency.value = 2005;
+   
+osc.connect(gain);
+  gain.connect(gain);
+        
+   
+         
+
+
+
+
+var high = audioContext.createBiquadFilter();
+high.type = 'highshelf';
+high.frequency.value = 100;
+high.gain.value = 10;
+gain.connect(high);
+high.connect(audioContext.destination);
+
+
+
+
+function changeGain(string, type) {
+    var value = parseFloat(string) / 100;
+    switch (type) {
+  
+    case 'highGain':
+        highGain.gain.value = value;
+        break;
+    }
+}
+
+  
+</script>
+
+      <button onclick="osc.start();">input on</button>
+
+</body></html>
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help

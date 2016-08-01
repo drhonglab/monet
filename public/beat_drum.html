@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://localhost:8080/aaa.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>template {display: none !important;} /* injected by platform.js */</style><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; } 
+</style> 
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Controlling Web Audio API Oscillators Tutorial Demo">
+		<meta name="author" content="Obadiah Metivier">
+		<link rel="stylesheet" href="./beat_drum_files/style.css">
+		<script src="./beat_drum_files/platform.js"></script>
+<link rel="import" href="http://localhost:8080/cont/webcomponents/polymer.html">
+<link rel="import" href="http://localhost:8080/cont/webcomponents/controls.html">
+		<style type="text/css">
+		.play {
+		    display:inline-block;
+			margin:5px 5px 5px 10px;	
+			width: 0;
+			height: 0;
+			border-left: 50px solid #444;
+			border-top: 25px solid transparent;
+			border-bottom: 25px solid transparent;
+			border-right: 0;
+			text-indent: -9999px;
+		}
+		.stop {
+			display:inline-block;
+			background: #444;
+			border: 0;
+			margin:5px;	
+			width: 50px;
+			height: 50px;
+			text-indent: -9999px;
+		}
+	
+		</style>		
+		
+	<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none;}
+body /deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none;}
+[touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto;}
+body /deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto;}
+[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x;}
+body /deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x;}
+[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y;}
+body /deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y;}
+[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y;}
+body /deep/ [touch-action="pan-x pan-y"],body /deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y;}
+</style></head>
+	<body>
+		<webaudio-knob id="knob1" style="position:absolute;left:200px;top:230px" src="cont/img/vin.png" value="0" max="2000" step="1" diameter="130" sprites="100"></webaudio-knob>
+	
+		<div id="content">
+		
+				<input type="button" class="play-button" value="Start" onclick="startOsc();">
+					
+				<input type="button" class="stop-button" value="on" onclick="on();">
+			
+					<input type="button" class="stop-button" value="off" onclick="off();">
+		</div>
+		<div class="push"></div>
+	
+	
+	
+		<script>
+// Initialize the Audio Context
+var context = new AudioContext(); // Create audio container with webkit prefix
+
+// Declare variables in the global scope so they can be disconnected
+var oscillator, gain;
+
+// Create function that routes an OscillatorNode through a GainNode and then to the output
+function startOsc(){ // Frequency is passed to this function from input button 
+
+	// Create OscillatorNode
+	oscillator = context.createOscillator(); // Create sound source
+	oscillator.type = 0; // Sine wave
+	oscillator.frequency.value = 300; // Frequency in hertz (passed from input button)
+// Play oscillator instantly
+	
+	// Create GainNode	
+	gain = context.createGain(); // Create gain node
+		gain.gain.value = 0.0; // Set gain to full volume
+
+	// Connect the Nodes
+	oscillator.connect(gain); // Connect oscillator to gain
+	gain.connect(context.destination); // Connect gain to output
+
+
+
+	oscillator.start(0.1); 
+
+	oscillator.start(0); 
+}
+
+function on() {
+	
+
+
+
+ setInterval(function(){ 	
+		
+	gain.gain.value = 0.5;}, 1000);
+
+  setInterval(function(){ 	
+		
+	gain.gain.value = 0.0;}, 1500);
+ 
+}
+
+
+
+function off() {
+	
+		gain.gain.value = 0.0;
+
+
+   setTimeout(function(){ 	
+		
+		gain.gain.value = 0.5; }, 1000);
+   
+}
+
+    var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob,false);
+
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+        oscillator.frequency.value  = str; }
+
+// JavaScript EventListeners
+
+
+// Map Keyboard Events for the play/stop functions	
+
+
+		</script>
+	
+	
+</body></html>

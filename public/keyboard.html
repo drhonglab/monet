@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+ 
+body {
+    background-color:#282828; 
+}
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+    <style>
+
+   
+      #jb-header {
+         background:url(tre.jpg);
+             width: 670px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 2px solid #484848;
+        border-radius: 25px;
+
+      }
+      #jb-content {
+   
+        background-color:black; 
+        width: 1400px;
+      
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 4px solid black;
+
+         
+      }
+  
+   
+      @media screen and (max-width:480px) {
+        #jb-header {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+
+    </style>
+   
+
+  </head>
+  <body>
+  
+    
+
+  <div id="jb-content">
+      
+    
+
+    
+  </body>
+ 
+   
+  
+
+
+ <webaudio-keyboard id="key1"  value="0" direction="" max="1000" step="1" keys="80" width="1350" height="150"
+  style="display:inline-block;border:3px; margin:0px;"  </webaudio-keyboard>
+               </div>
+ 
+
+
+
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
+  <div class="overlay-content">
+    <a href="#">Keyboard</a>
+    <a href="#">Feel free to enjoy</a>
+
+  </div>
+    
+
+
+      <script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabcontent.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+</script>
+<script>
+
+window.onload = function(){ 
+   openNav();
+  //openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+    
+
+</html>

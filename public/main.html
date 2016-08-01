@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>i have a dream
+    </title>
+  </head>
+
+  <body>
+    <h1 id="text"> main 1 </h1>
+     <input type="button" value="CLICK AND CHANGE "  onclick="text();" />
+    <input type="button" value="start" onclick="osc.start();" />
+     <input type="button" value="stop" onclick="stop();" />
+<input type="button" value="Do you like me?" id="poke" />
+  <input type="button" value=" hello "onclick="hello();" />
+    
+  
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<p id="name">Web-audio page on</p>
+    <script>
+
+
+
+
+
+ var socket = io();
+
+      function hello(){
+       document.getElementById('name').innerHTML="이순";
+       socket.emit('star', 'data');
+      }
+
+      socket.on('star', function(){ 
+      document.getElementById('name').innerHTML="helo";
+      init();
+      });
+/////////////////////////////////////////////
+function text() {
+
+var  A;  
+
+A = prompt (" hi Dr.Hong ");
+document.getElementById("text").innerText = A;
+    socket.emit('star', 'data');
+
+}
+
+
+ socket.on('star', function(){ 
+
+      document.getElementById('name').innerText = A;
+    
+      });
+////////////////////////////////////////////////////////////////////////////
+      function init() {
+    audioContext = new(window.AudioContext)();
+    gain = audioContext.createGain();
+    gain.gain.value = 0.1;
+    osc = audioContext.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.value = 315;
+  
+    
+    osc.connect(gain)
+    gain.connect(gain)
+          gain.connect(audioContext.destination);;
+   
+    osc.start();
+      return
+         
+     
+        socket.emit('star', 'data');
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+///send
+
+ function stop(){
+    
+       socket.emit('user', 'data');
+
+       }
+
+
+
+////recive 
+
+
+socket.on('user', function(){
+  osc.stop();
+  });
+
+
+///////////////////////////////////////////////////////////////
+    $(function(){
+ var socket = io();
+
+      $('body').on('keydown', function(){
+      socket.emit('star', 'data');
+ });
+
+      $('body').on('keyup', function(){
+  socket.emit('user', 'data');;
+      });
+
+
+      socket.on('connected', function(){
+      document.getElementById('name').innerHTML="자동";
+
+      });
+
+
+socket.on('user', function(){
+document.getElementById('name').innerHTML="hello was clicked";
+  });
+
+
+
+      $('#poke').click(function() {
+    document.getElementById('name').innerHTML="qqqq";
+     
+     });
+
+     $('#poke').on('click', function() {
+   socket.emit('user', 'data');
+
+    
+});
+
+
+
+    })
+
+
+    </script>
+  </body>
+</html>

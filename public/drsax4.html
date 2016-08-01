@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+
+
+    <!--web audio knobe file -->
+<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+ 
+<style>
+.button1 {
+    position: relative;
+    background-color: black;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 20px 6px;
+    width: 60px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+       border-radius: 8px;
+       box-shadow: 5px 5px 5px gray;
+}
+.button1:after {
+    content: "";
+    background: white;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.6s
+}
+.button1:active:after {
+     background-color:radial-gradient(circle, white, gray,black);
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.button1:hover {
+    background: radial-gradient(circle, white, black);/* Green */
+  
+}
+.button2:hover {
+    background: radial-gradient(circle, white,  #3399ff);/* Green */
+  
+}
+.button3:hover {
+    background: radial-gradient(circle, white,  #4dff4d);/* Green */
+  
+}
+.button2 {background-color: #3399ff;}
+.button3 {background-color: #4dff4d;}
+.button4 {font-size: 20px;}
+.button5 {font-size: 24px;}
+</style>
+
+<!--css backgound -->
+    <style>
+
+body {
+    background-color:black; 
+
+}
+/*back ground */
+</style>
+
+    <style > 
+.ver{
+
+   top: 40%;
+   transform: rotate(270deg);
+}
+.ver {
+  -webkit-appearance: none;]0
+  margin: 10px ;
+  width: 20%;
+}
+.ver:focus {
+  outline: none;
+}
+.ver::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: gray;
+
+}
+.ver::-webkit-slider-thumb {
+
+  height: 20px;
+  width: 15px;
+  border-radius: 3px;
+  background: black;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.6px;
+}
+
+}
+
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+    <style>
+
+   
+      #jb-header {
+
+         background:url(minibar.png);
+             background-size: 100% 100%;    
+             background-repeat: no-repeat;
+             width: 1000px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 3px solid black;
+        border-radius: 25px;
+
+      }
+      #jb-content {
+   background:url(minibar.png);
+             background-size: 100% 100%;    
+             background-repeat: no-repeat;
+             width: 1000px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 3px solid black;
+        border-radius: 25px;
+         
+      }    #jb-content2 {
+   background:url(minibar.png);
+             background-size: 100% 100%;    
+             background-repeat: no-repeat;
+             width: 1000px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 3px solid black;
+        border-radius: 25px;
+         
+      }
+      #jb-sidebar {
+        width: 670px;
+      
+        padding: 20px;
+        margin-right: 0px;
+        float: right;
+        border: 1px solid #484848;
+         border-radius: 25px;
+      }
+   
+      @media screen and (max-width:600px) {
+        #jb-header {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-content2 {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+
+    </style>
+    <style>
+body {font-family: "Lato", sans-serif;}
+
+ul.tab {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: black;
+     border-radius: 10px;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;
+  border: 0px solid #484848;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: blue;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: black;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #484848;
+    border-top: none;
+     border-radius: 25px;
+}
+</style>
+
+  </head>
+
+
+
+
+
+  <!--body start -->
+  
+
+  <body>
+
+
+
+  <!--moniter talk box -->
+
+  <!--head section -->
+
+       <div id="jb-header">
+      
+     <p style="color:white;left:500%" > &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Ampulitede Modulation </p> 
+    
+      <webaudio-switch id="switch3"  style="display:inline-block; position:relative;left:50px; margin:0px;" src="cont/img/button.png" value="0" height="80" width="80" ></webaudio-switch>
+       <webaudio-knob id="knob1" style="display:inline-block; position:relative;left:100px;margin:0px;"src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+
+               </div>
+<!--menu bar -->
+
+
+  <ul class="tab">
+     <li><a href="#" class="tablinks" onclick="openCity(event, 'menu1')">Osc type</a></li>
+     <li><a href="#" class="tablinks" onclick="openCity(event, 'menu2')">Mod</a></li>
+     <li><a href="#" class="tablinks" onclick="openCity(event, 'menu3')">Volum</a></li>
+     <li><a href="#" class="tablinks" onclick="openCity(event, 'menu4')">Close</a></li>
+  </ul>
+
+ <!--menu1  section -->
+
+<div id="menu1" class="tabcontent">
+  
+    <h3>Osillater type</h3>
+
+   
+    <input type="button" value=" see "onclick="see();" />
+    <input type="radio" style="display:inline-block; margin:0px; "   name="hong" value="2" onClick="saw();" /> 
+                     <p style="display:inline-block; margin:0px; "  >  Sawtooh &nbsp </p>
+     <input type="radio" style="display:inline-block; margin:0px; " name="hong" value="2" onClick= "oscillator.type = 'square';"/> 
+                    <p style="display:inline-block; margin:0px; "  >Square    </p>
+    <input type="button" value="CLICK "  onclick="text();" />   
+      
+<!--drum on/off-->
+
+       <input type="button" class="stop-button" value="on"  onClick="drum1();" />
+      <input type="button" class="button" value="off"  onClick="off(); " />
+
+<!--osc button on/off -->
+
+      <webaudio-switch id="switch3" style="display:inline-block; margin:0px; " src="cont/img/onoff.png" value="0" height="80" width="80" ></webaudio-switch>
+
+</div>
+
+
+<!--menu2 section -->
+
+<div id="menu2" class="tabcontent">
+     <h3>Modulation</h3>
+
+       <webaudio-slider  style="display:inline-block; margin:10px;" src="cont/img/hsliderbody.png" knobsrc="cont/img/hsliderknob.png" direction="hor"value="0" min="0" max="100" step="1" width="290" baseheight="50" knobwidth="24" knobheight="24" ditchLength="0" tooltip="Slider-L"></webaudio-slider>
+</div>
+
+
+
+<!--menu2 section -->
+
+<div id="menu3" class="tabcontent">
+  <h3>Dial</h3>
+
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+     <webaudio-knob id="knob2" 
+  style="display:inline-block; margin:0px;" 
+      src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+    <webaudio-knob id="knob3" style="display:inline-block; margin:0px;"  src="cont/img/dde.png" value="0" max="1" step="0.1" diameter="83" sprites="30"  ></webaudio-knob>
+
+      <pre  >  Carrier  Modulating   Tremolo     </pre> 
+
+</div>
+
+
+<!--middle section -->
+
+ <div id="jb-content">
+      
+     <p style="color:white;" >    &nbsp;   &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  You can monitor your value of dial.</p> 
+     
+  <webaudio-knob id="knob1"src="cont/img/knoo.png"   style="display:inline-block;position:relative;left:40%; margin:0px;" value="0" max="2000" step="1" diameter="90" sprites="30"></webaudio-knob>
+
+
+
+</div>
+
+
+
+
+
+
+ <div id="jb-content2">
+  <br>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp; <button class="button1" type="button"  id="switch4" value="0" max= "1" >start</button>
+  <input class="button1" type="button"  value="Stop" onclick="qqqq();">
+   <button class="button1 button2" type="button"  id="switch4" value="0" max= "1" >what</button>
+   <button class="button1  button3"  onclick="text();">Talk</button>
+<br><br><br><br><br>
+       <p id="text1" style="color:white;display:inline-block;position:relative;left:20%; margin:0px;" > You can monitor your value of dial.</p>  
+
+        
+
+
+
+
+</div>
+ 
+<!--main door section -->
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
+  <div class="overlay-content">
+    <a href="#">Rhythm box </a>
+
+  </div>
+    
+</div>
+
+
+</body>
+
+
+<!--body end -->
+
+<!--socket.io & jquerry file -->
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+<!--javascript start-->
+
+
+<!--menu contents -->
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabcontent.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+</script>
+
+<!--main door setting -->
+
+<script>
+
+window.onload = function(){ 
+   //openNav();
+  //openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+
+<!--socket comunication-->
+  <script>
+/////
+ var socket = io();
+
+function text() {
+
+var  text;  
+
+text = prompt (" hi Dr.Hong ");
+
+
+socket.emit('10',text);
+
+}
+
+ socket.on('10',function(text){ 
+document.getElementById("text1").innerText = text;
+
+   });
+
+    </script>
+
+<!--web music setting-->
+    <script>
+// Initialize the Audio Context
+var context = new AudioContext(); // Create audio container with webkit prefix
+
+// Declare variables in the global scope so they can be disconnected
+var oscillator, gain, a, b, bpm,loop,ppp,off;
+
+startOsc();
+
+function startOsc(){ // Frequency is passed to this function from input button 
+
+  // Create OscillatorNode
+  oscillator = context.createOscillator();
+  bpm= context.createOscillator();
+      lowpass =context.createBiquadFilter();  
+  oscillator.type ='sawtooth'; // Sine wave
+  oscillator.frequency.value = 200; 
+  bpm.frequency.value  = 1000;
+
+   lowpass.frequency.value = 437;
+        lowpass.Q.value  = 10; 
+  // Create GainNode  
+  gain = context.createGain(); // Create gain node
+    gain.gain.value = 0.0; 
+
+
+
+  oscillator.connect(lowpass);
+    lowpass.connect(gain);
+
+
+
+
+  oscillator.start(0); 
+
+ // gain connect
+
+ function ddd(e) {
+      
+        if(e.target.value=="1") {
+           gain.connect(context.destination);
+                                }
+             if(e.target.value=="0") {
+               gain.disconnect(context.destination);
+                                      }
+                 } 
+
+
+      var switch3 = document.getElementById('switch3');
+        switch3.addEventListener("change",ddd,false);
+
+
+}
+
+/// looping funtion setting
+function drum1() {
+
+
+ loop = setInterval(function(){   
+    
+         gain.gain.value = 0.7;
+        delay();
+        delay1();
+        delay2();
+                            }, bpm.frequency.value );
+
+///////////////////
+function delay () {
+
+var ppp = setTimeout(function(){  
+    gain.gain.value = 0;}, bpm.frequency.value *0.2);
+                    }
+//////////////////////
+function delay1 () {
+
+var ppp = setTimeout(function(){  
+    gain.gain.value = 0.7;}, bpm.frequency.value *0.75);
+                    }
+/////////////////////////
+function delay2 () {
+
+var ppp = setTimeout(function(){  
+    gain.gain.value = 0.1;}, bpm.frequency.value *0.5);
+}
+/////////////////////////
+
+
+
+}
+
+
+
+
+/// loop off setting
+
+function off() {
+    
+  
+    clearInterval(loop);
+  var ppp = setTimeout(function(){  gain.gain.value = 0.0;  delay();}, 10);
+
+
+function delay() {
+
+var ppp = setTimeout(function(){gain.gain.value = 0;}, 500);}
+      
+       
+                }
+
+
+    </script>
+
+
+
+<!-- socket setting -->
+
+
+    <script>
+
+     var socket = io();
+
+function saw()
+
+{  socket.emit('user', 'data');   }
+
+ socket.on('user',function(data){ 
+     oscillator.type = 'sawtooth'; }
+
+</script >
+
+<script>
+   
+ var socket = io();
+
+       var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob11,false);
+
+       function knob11(data) {
+        var str= 0;
+       str= data.target.value 
+            oscillator.frequency.value  = str; 
+       socket.emit('7', str);
+       }
+ 
+     socket.on('7',function(str){ 
+      oscillator.frequency.value  = str;
+     document.getElementById('knob1').innerHTML = str ;
+     document.getElementById('ver1').value = str ;
+
+
+
+    });
+
+    
+    var knob2 = document.getElementById('knob2');
+       knob2.addEventListener("change",knob,false);
+
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+        lowpass.frequency.value  = str; 
+  
+    
+      socket.emit('8', str);
+       }
+ 
+     socket.on('8',function(str){ 
+      lowpass.frequency.value  = str; 
+     document.getElementById('knob2').innerHTML = str ;
+     document.getElementById('ver2').value = str ;
+
+
+
+    });
+           var knob3 = document.getElementById('knob3');
+       knob3.addEventListener("change",knob33,false);
+
+       function knob33(data) {
+        var str= 0;
+       str= data.target.value 
+        gain.gain.value = str; 
+      socket.emit('9', str);
+       }
+ 
+     socket.on('9',function(str){ 
+        gain.gain.value = str; 
+     document.getElementById('knob3').innerHTML = str ;
+     document.getElementById('ver3').value = str ;
+
+
+
+    });
+
+       function saw(){
+        oscillator.type = 'sawtooth'; 
+       socket.emit('user', 'data');
+      }
+
+      socket.on('user', function(){ 
+      oscillator.type = 'sawtooth'; 
+      
+      });
+
+       
+</script>
+  
+    
+
+</html>

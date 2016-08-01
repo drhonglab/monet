@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+
+    <!--web audio knobe file -->
+<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+
+<head>
+
+
+
+<title>getUserMedia</title>
+
+
+
+<style>
+video {
+  object-fit: cover;
+}
+
+@media screen and (min-width: 1000px) {
+  video {
+    height: 200px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+
+ <button onclick="play()">on </button>
+    <button onclick="stop()">off </button>
+      <button onclick="time()">time</button>
+  <video autoplay></video>
+<canvas id="canvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+
+</canvas>
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+<script>
+
+
+    var socket = io();
+
+
+'use strict';
+
+navigator.getUserMedia = navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ;
+
+var constraints = {
+
+  video: true
+};
+var video = document.querySelector('video');
+
+
+
+function video1(stream) {
+  window.stream = stream; // stream available to console
+
+    video.src = window.URL.createObjectURL(stream);
+
+    video.play();
+}
+
+function errorCallback(error) {
+  console.log('navigator.getUserMedia error: ', error);
+}
+
+navigator.getUserMedia(constraints, video1, errorCallback);
+
+
+var c = document.getElementById("canvas");
+var context = c.getContext("2d");
+
+function time() {
+
+setInterval(function(){ 
+// 0.1초에 한 번씩 canvas에 그려준다
+  context.drawImage(video, 0, 0, 123, 123);
+
+
+}, 10);
+
+setInterval(function(){ 
+// 0.1초에 한 번씩 canvas에 그려준다
+
+  socket.emit('10', {
+      src: canvas[0].toDataURL('image/jpeg', 1.0)
+    });
+
+}, 10);
+
+
+
+
+}
+
+socket.on('14', function(str) {
+  img.src = str.src;
+  img.onload = function() {
+    context.drawImage(img, 0, 0, 123, 123);
+  }
+})
+function stop(){
+
+stream.getTracks()[0].stop();
+}
+
+function play(){
+navigator.getUserMedia(constraints, video1, errorCallback);
+isSend= true;
+
+}
+</script>
+
+
+
+             <webaudio-knob id="monet2" src="cont/img/red.png" style="position:absolute;left:40px;top:250px " value="0" max="2000" step="1" diameter="150" sprites="30"></webaudio-knob>
+
+
+
+ 
+
+  <script >
+
+
+   
+ 
+
+////////////////////////////////////////////
+
+  var monet2 = document.getElementById('monet2');
+       monet2.addEventListener("change",knob_2);
+       function knob_2(data) {
+        var str= 0;
+  
+           str= data.target.value ; 
+             var c = str;
+
+            socket.emit('9', str);
+          
+
+}
+
+
+
+
+ 
+
+  
+</script>
+
+

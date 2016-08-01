@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{ margin:48px; background:#000; font-family: Arial, Helvetica, sans-serif; }
+div#banner{
+    width: 1000px;
+    height: 200px;
+    margin: 0px auto;
+    border: #639 1px solid;
+    overflow: hidden;
+}
+div#banner > #banner_backdrop{
+    position: relative;
+    background: url(bird.png) repeat-x;
+    width: 1320px;
+    height: 200px;
+    animation: backdrop_roll linear 0.2s infinite;
+}
+@keyframes backdrop_roll { from { right: 0px; } to { right: 320px; } }
+div#banner > #banner_content{
+    position: relative;
+    width: 96%;
+    height: 160px;
+    margin: 20px auto;
+    top:-200px;
+    color:#FFF;
+    font-size:27px;
+}
+</style>
+</head>
+<body>
+  <div id="banner">
+    <div id="banner_backdrop"></div>
+    <div id="banner_content">
+      Put anything you want inside this box...
+    </div>
+  </div>
+</body>
+</html>

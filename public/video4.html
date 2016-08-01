@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<title>getUserMedia</title>
+
+
+
+<img id="canvas" width="120" height="100" >
+ 
+
+</head>
+
+<body>
+
+
+      <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+
+
+ var socket = io();
+
+
+
+
+  socket.on('10', function(str){ 
+
+ var c = document.getElementById("canvas");
+ c.src=str;
+
+
+  
+        });
+
+ 
+
+
+</script>
+
+
+
+
+</body>
+</html>

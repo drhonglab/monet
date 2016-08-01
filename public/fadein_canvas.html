@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div#box1 {
+	background: #9DCEFF;
+	width: 400px;
+	height: 200px;
+}
+</style>
+<script>
+function fadeOut(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "opacity 0.5s linear 0s";
+	elem.style.opacity = 0;
+}
+function fadeIn(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "opacity 0.5s linear 0s";
+	elem.style.opacity = 1;
+}
+function changeBG(el,clr){
+	var elem = document.getElementById(el);
+	elem.style.transition = "background 1.0s linear 0s";
+	elem.style.background = clr;
+}
+</script>
+</head>
+<body>
+<button onclick="fadeOut('box1');">Fade out</button>
+<button onclick="fadeIn('box1');">Fade in</button>
+<div id="box1">Content in box 1 ...</div>
+<button onclick="changeBG('box1','#F0F')">Magenta</button>
+<button onclick="changeBG('box1','#0C0')">Green</button>
+<button onclick="changeBG('box1','#9DCEFF')">Origninal</button>
+
+</body>
+</html>

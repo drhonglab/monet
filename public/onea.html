@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+body {
+    background-color:#282828;
+}
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+    <style>
+
+
+      #jb-header {
+             width: 670px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 2px solid #484848;
+        border-radius: 25px;
+
+      }
+      #jb-content {
+        width: 670px;
+
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 2px solid #484848;
+          border-radius: 25px;
+      }
+      #jb-sidebar {
+        width: 670px;
+
+        padding: 20px;
+        margin-right: 0px;
+        float: right;
+        border: 1px solid #484848;
+         border-radius: 25px;
+      }
+
+      @media screen and (max-width:480px) {
+        #jb-header {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+
+    </style>
+
+
+
+    <style>
+    .button1 {
+        position: relative;
+        background-color: black;
+        border: none;
+        font-size: 16px;
+        color: #FFFFFF;
+        padding: 25px 6px;
+        width: 100px;
+        text-align: center;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+           border-radius: 8px;
+           box-shadow: 5px 5px 5px gray;
+    }
+    .button1:after {
+        content: "";
+        background: white;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px!important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.6s
+    }
+    .button1:active:after {
+         background-color:radial-gradient(circle, white, gray,black);
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+    .button1:hover {
+        background: radial-gradient(circle, white, black);/* Green */
+
+    }
+    .button2:hover {
+        background: radial-gradient(circle, white,  #3399ff);/* Green */
+
+    }
+    .button3:hover {
+        background: radial-gradient(circle, white,  #4dff4d);/* Green */
+
+    }
+    .button2 {background-color: #3399ff;}
+    .button3 {background-color: #4dff4d;}
+    .button4{background-color: #ff751a;}  /* orenge  */
+    .button5 {background-color: #0080ff;}   /* sky  */
+    .button6 {background-color: #e6e600;}  /* yellow  */
+    .button7 {background-color: #ff471a;}  /* red  */
+    .button8 {background-color: #ff80ff;}   /* purple */
+    .button9 {background-color: #4dff4d;}
+    .button10 {background-color: #4dff4d;}
+    .button44 {font-size: 20px;}
+    .button55 {font-size: 24px;}
+    </style>
+
+
+
+
+
+
+  </head>
+  <body>
+
+      <div id="jb-header">
+
+     <p style="color:white;" >   &nbsp; Interactive Web-Music ensemble System </p>
+          <p style="color:orange;" >   &nbsp;  Play the light of MONET </p>
+               </div>
+
+
+
+
+
+
+
+
+  <div id="jb-content">
+
+
+
+&nbsp;  &nbsp;&nbsp;  &nbsp;<button class="button1 button4"   onclick= "location.href='http://192.168.1.100:8358/new1.html'" >Go to Soloist</button> &nbsp;  &nbsp;
+&nbsp;  &nbsp;&nbsp;  &nbsp;<button class="button1 button6"   onclick= "location.href='http://192.168.1.100:8358/new2.html'" >Go to Pianist</button>
+<br><br><br>
+&nbsp;  &nbsp;&nbsp;  &nbsp;<button class="button1 button8"   onclick= "location.href='http://192.168.1.100:8358/new3.html'" >Go to Bassist</button> &nbsp;  &nbsp;
+&nbsp;  &nbsp;&nbsp;  &nbsp;<button class="button1 button7"   onclick= "location.href='http://192.168.1.100:8358/new4.html'" >Go to Drummer</button>
+
+
+<br>
+
+
+
+
+
+
+
+
+  </body>
+
+
+
+
+
+
+
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Enter</a>
+  <div class="overlay-content">
+
+    <a href="">Feel free to enjoy</a>
+
+  </div>
+
+
+
+      <script>
+
+
+
+window.onload = function(){
+   //openNav();
+  openCity(event, 'London');
+
+    // obj.value = "날코천재";
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+
+
+</html>

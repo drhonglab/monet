@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+    <title>i 
+    </title>
+  </head>
+
+  <body>
+<img src="bg3.png" alt="Mountain View" style="width:1430px;height:800px;position:absolute;left:80px;top:20px">
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+        <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+            <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                        <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                            <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                                <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                                    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+                                    
+    <style > 
+    body {
+    background-color: black;
+}
+.ver{
+   position: absolute;
+   top: 40%;
+   transform: rotate(270deg);
+}
+.ver {
+  -webkit-appearance: none;
+  margin: 10px ;
+  width: 6%;
+}
+.ver:focus {
+  outline: none;
+}s
+.ver::-webkit-slider-runnable-track {
+  width: 5%;
+  height: 3px;
+  cursor: pointer;
+  background: gray;
+
+}
+.ver::-webkit-slider-thumb {
+
+  height: 20px;
+  width: 20px;
+  border-radius: 3px;
+  background: black;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.6px;
+}
+
+}
+
+</style>
+
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center; 
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #242424}
+
+.button:active {
+  background-color: #484848;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+   
+    <h1 id="text" style="position:absolute;left:200px;top:200px"> Interactive Web-Music
+    </h1>  
+    
+     <button class="button"style="position:absolute;left:30%;top:5%" onclick="text();">Talk</button>
+   
+
+
+  <input type="range" class = "ver"style="position:absolute;left:400px;top:50px"id ="ver"  name="points" step="0.1" min="0" max="100">
+
+
+  <input type="range" class = "ver" style="position:absolute;left:500px;top:50px" id="ver1" name="points" step="0.1" min="0" max="100">
+
+
+  <input type="range" class = "ver" style="position:absolute;left:600px;top:50px" id="ver2" name="points" step="0.1" min="0" max="100">
+
+
+
+
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+
+<p id="knob" style="position:absolute;left:400px;top:20px">CH.1 Value</p>
+<p id="knob1" style="position:absolute;left:500px;top:20px">CH.2 Value</p>
+<p id="knob2" style="position:absolute;left:600px;top:20px">CH.3 Value</p>
+<h1 id="player" style="position:absolute;left:900px;top:200px"></h1>
+
+
+    <script>
+
+
+
+ var socket = io();
+
+    var knob = document.getElementById('ver');
+       knob.addEventListener("change",knob0,false);
+
+       function knob0(data) {
+      
+     var  str= data.target.value 
+
+       socket.emit('1', str);
+       }
+ 
+     socket.on('1',function(str){ 
+     document.getElementById('knob').innerHTML = str ;
+     document.getElementById('ver').value = str ;
+    });
+
+
+
+
+  var knob1 = document.getElementById('ver1');
+       knob1.addEventListener("change",knob11,false);
+
+       function knob11(data) {
+      
+     var  str= data.target.value 
+
+       socket.emit('2', str);
+       }
+ 
+     socket.on('2',function(str){ 
+     document.getElementById('knob1').innerHTML = str ;
+     document.getElementById('ver1').value = str ;
+    });
+
+  var knob2 = document.getElementById('ver2');
+       knob2.addEventListener("change",knob22,false);
+
+       function knob22(data) {
+      
+     var  str= data.target.value 
+
+       socket.emit('3', str);
+       }
+ 
+     socket.on('3',function(str){ 
+     document.getElementById('knob2').innerHTML = str ;
+     document.getElementById('ver2').value = str ;
+    });
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+function text() {
+
+var  text;  
+
+text = prompt (" hi Dr.Hong ");
+
+
+socket.emit('10',text);
+
+}
+
+
+ socket.on('10',function(text){ 
+document.getElementById("text").innerText = text;
+
+
+
+    });
+///////////////////////////////////////////////
+ //socket.on('id',function(id){ 
+
+  //document.getElementById("aaa").innerText =;
+
+    //});
+
+  socket.on('change name',function(name){ 
+
+  document.getElementById("player").innerText = "We are playing with " + name +" "+"players" ;
+
+    });
+    socket.on('change name',function(minus){ 
+
+  document.getElementById("player").innerText = "We are playing  with "+minus +" "+ "players" ;
+
+    });
+
+///////////////////////////////////////////////////////////////////////////////
+      function see(){
+     
+       socket.emit('user', 'data');
+      }
+
+      socket.on('user', function(){ 
+      document.getElementById('name').innerHTML="see";
+      
+      });
+
+
+      function hello(){
+
+       socket.emit('star', 'data');
+      }
+
+      socket.on('star', function(){ 
+      document.getElementById('name').innerHTML="hide" ;
+      
+      });
+
+ 
+
+    </script>
+   
+  </body>
+</html>

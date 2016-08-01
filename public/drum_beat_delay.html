@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta charset="UTF-8">
+	
+		<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+			
+		
+	</head>
+	<body>
+
+
+  
+      <webaudio-knob id="knob1"   style="position:absolute;left:100px;top:250px" src="cont/img/B-knob.png" value="0.0" max="2000" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+   
+
+    <webaudio-knob id="knob2"   style="position:absolute;left:200px;top:250px" src="cont/img/B-knob.png" value="0" max="2000" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+  
+      <webaudio-knob id="knob3"   style="position:absolute;left:400px;top:250px" src="cont/img/B-knob.png" step='0.1'  value="0.6" max="1" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+  
+  
+   <webaudio-switch id="switch3"  style="position:absolute;left:785px;top:250px" src="cont/img/onoff.png" value="0" height="80" width="80" ></webaudio-switch>
+
+
+
+
+  <input type="radio"  style="position:absolute;left:588px;top:329px" name="hong" value="2" onClick="oscillator.type = 'sawtooth';" > 
+
+  <input type="radio"  style="position:absolute;left:588px;top:465px "name="hong" value="2" onClick= "oscillator.type = 'square';"> 
+     
+      
+
+	
+		<div id="content">
+		
+				
+					
+				<input type="button" class="stop-button" value="on"  onClick="drum1();" />
+			
+					<input type="button" class="button" value="off"  onClick="off(); " />
+		</div>
+		<div class="push"></div>
+	</div>
+	
+	
+		<script>
+// Initialize the Audio Context
+var context = new AudioContext(); // Create audio container with webkit prefix
+
+// Declare variables in the global scope so they can be disconnected
+var oscillator, gain, a, b, bpm,loop,ppp,off;
+
+startOsc();
+function startOsc(){ // Frequency is passed to this function from input button 
+
+	// Create OscillatorNode
+	oscillator = context.createOscillator();
+	bpm= context.createOscillator();
+	    lowpass =context.createBiquadFilter();  
+	oscillator.type ='sawtooth'; // Sine wave
+	oscillator.frequency.value = 200; 
+	bpm.frequency.value  = 1000;
+
+	 lowpass.frequency.value = 437;
+        lowpass.Q.value  = 10; 
+	// Create GainNode	
+	gain = context.createGain(); // Create gain node
+		gain.gain.value = 0.0; 
+
+
+
+  oscillator.connect(lowpass);
+    lowpass.connect(gain);
+
+
+
+
+	oscillator.start(0); 
+
+ 
+
+ function ddd(e) {
+      
+        if(e.target.value=="1") {
+           gain.connect(context.destination);
+                }
+             if(e.target.value=="0") {
+               gain.disconnect(context.destination);
+          }
+       
+                    } 
+      var switch3 = document.getElementById('switch3');
+        switch3.addEventListener("change",ddd,false);
+
+
+}
+
+///////////////////////////////////////////////////////////////
+function drum1() {
+
+
+ loop = setInterval(function(){ 	
+		
+	gain.gain.value = 0.7;
+	delay();
+	delay1();
+	delay2();
+                            }, bpm.frequency.value );
+
+
+function delay () {
+
+var ppp = setTimeout(function(){ 	
+		gain.gain.value = 0;}, bpm.frequency.value *0.2);
+}
+
+function delay1 () {
+
+var ppp = setTimeout(function(){ 	
+		gain.gain.value = 0.7;}, bpm.frequency.value *0.75);
+}
+
+function delay2 () {
+
+var ppp = setTimeout(function(){ 	
+		gain.gain.value = 0.1;}, bpm.frequency.value *0.5);
+}
+
+
+
+
+
+}
+
+function off() {
+    
+  
+    clearInterval(loop);
+  var ppp = setTimeout(function(){ 	
+		gain.gain.value = 0.0;
+		delay();
+
+	}, 10);
+
+
+function delay() {
+
+var ppp = setTimeout(function(){ 	
+		gain.gain.value = 0;}, 500);
+}
+    	
+    	 
+}
+
+
+///////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    
+
+// JavaScript EventListeners
+
+
+// Map Keyboard Events for the play/stop functions	
+
+
+		</script>
+
+
+
+<script >
+   
+
+
+       var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob11,false);
+
+       function knob11(data) {
+        var str= 0;
+       str= data.target.value 
+          	oscillator.frequency.value  = str; }
+
+    
+    var knob2 = document.getElementById('knob2');
+       knob2.addEventListener("change",knob,false);
+
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+        lowpass.frequency.value  = str; }
+  
+    
+
+           var knob3 = document.getElementById('knob3');
+       knob3.addEventListener("change",knob33,false);
+
+       function knob33(data) {
+        var str= 0;
+       str= data.target.value 
+        gain.gain.value = str; 
+      }
+         
+
+    
+       
+</script>
+	
+	</body>
+</html>

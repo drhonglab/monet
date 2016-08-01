@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+  </head>
+
+  <body>
+    <h1>decodeAudioData example</h1>
+
+       <button class="play" onclick="init();">Play </button>
+    <button class="stop">Stop</button>
+
+  </body>
+<script>
+
+
+ var context = new AudioContext(); 
+ var electro; 
+window.onload = init;
+
+
+function init(){
+  
+
+  
+  var request = new XMLHttpRequest(); // Load the Sound with XMLHttpRequest
+  request.open("GET", "abc.wav", true); // Path to Audio File
+  request.responseType = "arraybuffer"; // Read as Binary Data
+  
+
+
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer){
+      electro = buffer; 
+    });
+  }
+
+
+
+ request.send(); 
+  
+
+
+
+     window.addEventListener("keydown",onKeyDown); 
+
+  function onKeyDown(e){
+
+    switch (e.keyCode) {
+      // X
+      case 88:
+        var souce = context.createBufferSource(); // Declare a New Sound
+        souce.buffer = electro; // Attatch our Audio Data as it's Buffer
+        souce.connect(context.destination);  // Link the Sound to the Output
+        souce.start(0); // Play the Sound Immediately
+      break;
+    }
+ }
+
+
+ }
+
+
+
+
+
+
+
+
+  </script>
+</html>

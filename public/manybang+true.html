@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Controlling Web Audio API Oscillators Tutorial Demo"/>
+		<meta name="author" content="Obadiah Metivier"/>
+		<link rel="stylesheet" href="style.css">
+		<style type="text/css">
+		.play {
+		    display:inline-block;
+			margin:5px 5px 5px 10px;	
+			width: 0;
+			height: 0;
+			border-left: 50px solid #444;
+			border-top: 25px solid transparent;
+			border-bottom: 25px solid transparent;
+			border-right: 0;
+			text-indent: -9999px;
+		}
+		.stop {
+			display:inline-block;
+			background: #444;
+			border: 0;
+			margin:5px;	
+			width: 50px;
+			height: 50px;
+			text-indent: -9999px;
+		}
+	
+		</style>		
+		
+	</head>
+	<body>
+		   <button class="set-target-at-time-plus">Set gain +0.25 in 1 second</button>
+		<div id="content">
+		
+				<input type="button" class="play-button" value="Start"  onClick="startOsc(2, 1000, 1);" />
+				<input type="button" id ="qwe" class="play-button" value="t"  onClick="startOsc(2, 3000, 1);" />
+				<input type="button" class="stop-button" value="Stop"  onClick="off();" />
+				<input type="button" class="stop-button" value="kkk"  onClick="kkk();" />
+				<input type="button"  class="play-button" value="ttt"  onClick="st();" />	
+			
+		</div>
+		    <input type="range"  value="0.7" step="0.1"id = "ver" min="0.0" max="1" ></input>
+		<div class="push"></div>
+	</div>
+	
+	
+		<script>
+// Initialize the Audio Context
+var context = new AudioContext(); // Create audio container with webkit prefix
+// Declare variables in the global scope so they can be disconnected
+
+
+
+var targetAtTimePlus = document.querySelector('.set-target-at-time-plus');
+var oscillator, gain;
+// Create function that routes an OscillatorNode through a GainNode and then to the output
+function startOsc(ccc, abb, rrr){ // Frequency is passed to this function from input button 
+	// Create OscillatorNode
+	var isStared = false;
+
+	oscillator = context.createOscillator(); // Create sound source
+	oscillator.type = ccc; // Sine wave
+	oscillator.frequency.value = abb; // Frequency in hertz (passed from input button)
+// Play oscillator instantly
+	
+	// Create GainNode	
+	gain = context.createGain(); 
+
+	 // Set gain to full volume
+	// Connect the Nodes
+	oscillator.connect(gain); // Connect oscillator to gain
+	gain.connect(context.destination); // Connect gain to output
+gain.gain.setValueAtTime(0.0, 0);
+gain.gain.linearRampToValueAtTime(1.0, 1);
+gain.gain.linearRampToValueAtTime(0.1, 2);
+gain.gain.linearRampToValueAtTime(rrr, 3);
+	
+
+	function var myStart(var myState)
+	{
+		isStarted = myState;
+
+		oscillator.start(); 
+	}
+	function var isStarted()
+	{
+		return isStarted;
+	}
+}
+
+var aa = new startOsc(1, 900, 0,0);
+aa.isStarted();
+aa.myStart(true);
+var count = 0;
+var i1 = 2;
+var i2 = 500;
+var i3 = str;
+var state = false;
+
+function st(){
+
+if(state == true)
+{
+	startOsc(i1, i2, i3);
+
+
+}
+
+if(count == 0)
+{
+	startOsc(i1, i2, i3);
+}
+else if ((count == 1))
+{
+    startOsc(i1, i2, i3);
+}
+else
+{
+
+}
+
+state == !state;
+
+i1 = i1 + 5;
+i2 = i2 + 500/10;
+count++;
+}
+
+function off() {
+	gain.gain.value = 0.2;
+	oscillator.stop(0); // Stop oscillator after 0 seconds
+   // Disconnect oscillator so it can be picked up by browser�s garbage collector
+}
+// JavaScript EventListeners
+// Map Keyboard Events for the play/stop functions	
+  var ver = document.getElementById('ver');
+       ver.addEventListener("change",knob0,false);
+       function knob0(d) {
+      str= 0;
+   str= d.target.value 
+     	 gain.gain.value = str;
+ 
+       }
+  
+     
+           function kkk() {
+          
+   document.getElementById('qwe').setAttribute( 'onclick', 'startOsc(2, 6000, 1);'); 
+       }
+
+
+
+
+    
+
+		</script>
+		 <p><a id="abc" href="#">CMS Factory</a></p>
+		 <p id="demo">a</p>
+
+	</body>
+</html>

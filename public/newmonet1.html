@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+
+
+    <meta charset="utf-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <style>
+
+body {
+    background-color:black; 
+
+}
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+
+
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center; 
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #242424}
+
+.button:active {
+  background-color: #484848;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
+  </head>
+  <body>
+  
+      <div id="jb-header">
+      
+     <h3 style="color:white;" >   &nbsp;&nbsp;&nbsp; Interactive Web- music soloist </h3> 
+               </div>
+ 
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+      
+     <p style="color:white;" >   &nbsp;  Web- music soloist </p> 
+
+    
+  </body>
+
+      <img id="img2" src="bbbk.png" style="width:400px;height:500px;position:absolute;left:0px;top:0px">
+
+      <webaudio-knob id="dial3" src="cont/img/red.png" style="position:absolute;left:100px;top:400px " value="0" max="2000" step="1" diameter="90" sprites="30"></webaudio-knob>
+   <webaudio-switch id="switch_standby" style="position:absolute;left:200px;top:150px " src="cont/img/onoff.png" value="0" height="80" width="80"></webaudio-switch>
+
+    <webaudio-switch id="switch7" style="position:absolute;left:0px;top:520px " src="cont/img/swt.png" value="0" height="40" width="40"></webaudio-switch>
+
+     <webaudio-slider  style="display:inline-block; margin:10px;" src="s1.png" knobsrc="snn.png" direction="ver"value="0" min="0" max="100" step="1" width="290" baseheight="50" knobwidth="44" knobheight="44" ditchLength="0" tooltip="Slider-L"></webaudio-slider>
+ 
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="100" sprites="30"  ></webaudio-knob>
+
+
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/vfe.png" value="0" max="2000" step="1" diameter="100" sprites="4"  ></webaudio-knob>
+
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/dde.png" value="0" max="2000" step="1" diameter="100" sprites="30"  ></webaudio-knob>
+
+<font  style="display:inline-block; margin:0px;"  color="black" size="3" > 
+ <pre  >  Carrier  Modulating   Tremolo     </pre>
+   <p  >CSS is a stylesheet language that describes the presentation of an HTML (or XML) document.
+
+CSS describes how elements must be rendered on screen, on paper, or in other media.
+
+ </p>
+     </div>
+ 
+
+
+
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
+  <div class="overlay-content">
+    <a href="#">Sound Generator </a>
+    <a href="#">Feel free to enjoy</a>
+
+  </div>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+      <script>
+
+
+
+</script>
+<script>
+
+
+
+window.onload = function(){ 
+   openNav();
+  //openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+
+
+ var socket = io();
+
+function text() {
+
+var  text;  
+
+text = prompt (" hi Dr.Hong ");
+
+
+socket.emit('10',text);
+
+}
+
+
+ socket.on('10',function(text){ 
+document.getElementById("text1").innerText = text;
+
+
+
+    });
+///////////////////////////////////////////////
+ //socket.on('id',function(id){ 
+
+  //document.getElementById("aaa").innerText =;
+
+    //});
+
+
+</script>
+<p id="text1"> Taking..</p>
+
+</html>

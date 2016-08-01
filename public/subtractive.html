@@ -1,0 +1,181 @@
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+
+</head>
+
+<h2>        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Simple Subtractive Synthesizer  </h2>
+<body>
+
+
+
+<div class='display'>
+
+    <div style="background-image: url('cont/img/newback1.png');width:870px;height:675px;margin-left:54px; margin-top:0px;  auto;padding:0px;">
+
+       <label for='freq1' style="position:absolute;left:800px;top:470px" > Frequency <br> <span class='freq1' >220Hz<br></span></label>
+  
+  
+    <webaudio-knob id="knob1"   style="position:absolute;left:200px;top:250px" src="cont/img/B-knob.png" value="0" max="2000" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+     <webaudio-knob id="knob2"   style="position:absolute;left:300px;top:250px" src="cont/img/B-knob.png" value="0.0" max="20" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+      <webaudio-knob id="knob3"   style="position:absolute;left:400px;top:250px" src="cont/img/B-knob.png" step='0.1'  value="0.0" max="1" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+      <webaudio-knob id="knob4"   style="position:absolute;left:100px;top:250px" src="cont/img/B-knob.png" value="0.0" max="2000" step="1" diameter="80" sprites="99"  ></webaudio-knob>
+   
+
+    <webaudio-switch id="switch1" style="position:absolute;left:800px;top:350px" src="cont/img/switch_toggle.png"  value="0" max="1" width="54" height="54"></webaudio-switch>
+    <webaudio-switch id="switch2" style="position:absolute;left:800px;top:410px" src="cont/img/switch_toggle.png"  value="0" max="1" width="54" height="54"></webaudio-switch>
+  
+   <webaudio-switch id="switch3"  style="position:absolute;left:785px;top:250px" src="cont/img/onoff.png" value="0" height="80" width="80" ></webaudio-switch>
+
+<webaudio-keyboard id="key1"  value="0" max="1000" step="1" keys="60" width="800" height="125" style="position:absolute;left:100px;top:553px"></webaudio-keyboard>
+
+ <webaudio-slider id="slide1"  style="position:absolute;left:120px;top:350px" src="cont/img/vsliderbody.png" knobsrc="cont/img/vsliderknob.png" value="0" min="0" max="2000" step="1" width="40" height="150"  basewidth="40" baseheight="160" knobwidth="24" knobheight="24" ditchLength="100" tooltip="Frequency"></webaudio-slider>
+  <webaudio-slider id="slide2"  style="position:absolute;left:220px;top:350px" src="cont/img/vsliderbody.png" knobsrc="cont/img/vsliderknob.png" value="0" min="0" max="2000" step="1" width="40" height="150"  basewidth="40" baseheight="160" knobwidth="24" knobheight="24" ditchLength="100" tooltip="Cutoff"></webaudio-slider>
+   <webaudio-slider  id="slide3"  style="position:absolute;left:320px;top:350px" src="cont/img/vsliderbody.png" knobsrc="cont/img/vsliderknob.png" value="0" min="0" max="20" step="1" width="40" height="150"  basewidth="40" baseheight="160" knobwidth="24" knobheight="24" ditchLength="100" tooltip="Resonance"></webaudio-slider>
+    <webaudio-slider  id="slide4"  style="position:absolute;left:420px;top:350px" src="cont/img/vsliderbody.png" knobsrc="cont/img/vsliderknob.png" value="0" step='0.1' min="0.0" max="1.0" step="1" width="40" height="150"  basewidth="40" baseheight="160" knobwidth="24" knobheight="24" ditchLength="100" tooltip="Gain"></webaudio-slider>
+        
+
+  <input type="radio" id="switch4"   style="position:absolute;left:588px;top:267px"  name="hong" value="0"   onClick= "osc.type ='sine';"> 
+  <input type="radio"  style="position:absolute;left:588px;top:329px" name="hong" value="2" onClick="osc.type = 'sawtooth';" > 
+  <input type="radio" style="position:absolute;left:588px;top:394px"  name="hong" value="1"  onClick="osc.type = 'triangle';"> 
+  <input type="radio"  style="position:absolute;left:588px;top:465px "name="hong" value="2" onClick= "osc.type = 'square';"> 
+     
+      
+
+  </div>
+
+
+
+<script>
+var startButton = document.querySelector('.start'),
+    stopButton = document.querySelector('.stop'),
+    freqSlider = document.querySelector(".freq-slider"),
+    detuneSlider = document.querySelector('.detune-slider'),
+    gainSlider = document.querySelector('.gain-slider'),
+   
+    freqDisplay = document.querySelector('.freq'),
+        freqDisplay1 = document.querySelector('.freq1');
+// load our default value
+init();
+// setup start/stop
+startButton.onclick = start;
+stopButton.onclick = stop;
+// setup waveform chan
+function init() {
+     audioContext = new (window.AudioContext)();
+    amp = audioContext.createGain();
+    lowpass =audioContext.createBiquadFilter();
+    osc = audioContext.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.value = 315;
+    lowpass.frequency.value = 200;
+    
+    osc.connect(lowpass);
+    lowpass.connect(amp);
+   osc.start(0);
+ function ddd(e) {
+      
+        if(e.target.value=="1") {
+           amp.connect(audioContext.destination);
+                }
+             if(e.target.value=="0") {
+               amp.disconnect(audioContext.destination);
+          }
+       
+                    } 
+      var switch3 = document.getElementById('switch3');
+        switch3.addEventListener("change",ddd,false);
+function sin(e) {
+      
+        if(e.target.value=="0") {
+         osc.type = 'sine';
+                }
+             if(e.target.value=="1") {
+            
+              
+          }
+         } 
+      var switch4 = document.getElementById('switch4');
+        switch4.addEventListener("change",sin,false);
+freqSlider.oninput = function () {
+    changeFreq(freqSlider.value);
+}
+// change frequency
+function changeFreq(fff) {
+    osc.frequency.value = fff;
+    freqDisplay1.innerHTML = fff+ 'Hz';
+}
+function changeFreq(ff) {
+    osc.frequency.value = ff;
+    freqDisplay.innerHTML = ff+ 'Hz';
+}
+}
+  </script>
+
+
+
+
+<script >
+   
+    var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob,false);
+ var slide2 = document.getElementById('slide2');
+      slide2.addEventListener("change",knob,false);
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+        lowpass.frequency.value  = str; }
+  
+           var knob2 = document.getElementById('knob2');
+       knob2.addEventListener("change",knob22,false);
+ var slide3 = document.getElementById('slide3');
+      slide3.addEventListener("change",knob22,false);
+       function knob22(data) {
+        var str= 0;
+       str= data.target.value 
+        lowpass.Q.value  = str; }
+           var knob3 = document.getElementById('knob3');
+       knob3.addEventListener("change",knob33,false);
+ var slide4 = document.getElementById('slide4');
+      slide4.addEventListener("change",knob33,false);
+       function knob33(data) {
+        var str= 0;
+       str= data.target.value 
+        amp.gain.value = str; 
+      }
+          var knob4 = document.getElementById('knob4');
+       knob4.addEventListener("change",knob44,false);
+            var slide1 = document.getElementById('slide1');
+      slide1.addEventListener("change",knob44,false);
+       function knob44(data) {
+        var str= 0;
+       str= data.target.value 
+        osc.frequency.value  = str; }
+         var key1 = document.getElementById("key1");
+    key1.addEventListener('change',key11,false);
+    key1.addEventListener('note',key11,false);
+    function key11(data) {
+        var str=0;
+        str  = 880 * 4 * Math.pow(2, (data.note[1] - 69) / 12);
+           osc.frequency.value = str;
+             freqDisplay1.innerHTML = str.toFixed(0)+ 'Hz'
+        if(data.note[0]=="1") {
+             amp.gain.value = 0.7;
+               
+          }
+             if(data.note[0]=="0") {
+                  amp.gain.value = 0;
+          }
+            
+        }
+    
+       
+</script>
+</body>
+</html>

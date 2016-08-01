@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+
+
+    <!--web audio knobe file -->
+<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+ 
+<style>
+.button1 {
+    position: relative;
+    background-color: black;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 20px 6px;
+    width: 60px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+       border-radius: 8px;
+       box-shadow: 5px 5px 5px gray;
+}
+.button1:after {
+    content: "";
+    background: white;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.6s
+}
+.button1:active:after {
+     background-color:radial-gradient(circle, white, gray,black);
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.button1:hover {
+    background: radial-gradient(circle, white, black);/* Green */
+  
+}
+.button2:hover {
+    background: radial-gradient(circle, white,  #3399ff);/* Green */
+  
+}
+.button3:hover {
+    background: radial-gradient(circle, white,  #4dff4d);/* Green */
+  
+}
+.button2 {background-color: #3399ff;}
+.button3 {background-color: #4dff4d;}
+.button4 {font-size: 20px;}
+.button5 {font-size: 24px;}
+</style>
+
+
+
+  <style>
+    body {
+            background-color: gray;
+        }
+        
+        .ver {
+            position: absolute;
+            top: 80%;
+            transform: rotate(270deg);
+        }
+        
+        .ver {
+            -webkit-appearance: none;
+            margin: 0px;
+            width: 120px;  /*  slide high*/
+        }
+        
+        .ver:focus {
+            outline: none;
+        }
+        
+         .ver::-webkit-slider-runnable-track {
+            width: 7px;
+            height: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+            background: black;
+        }
+        
+        .ver::-webkit-slider-thumb {
+            height: 50px;
+            width: 50px;
+            
+            background: yellow;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7.6px;
+            box-shadow: -1 3px black;
+        }
+    }
+    </style>
+
+<!--css backgound -->
+    <style>
+
+body {
+    background-color:black; 
+
+}
+/*back ground */
+
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+    <style>
+
+   
+      #jb-header {
+
+         background:url(minibar.png);
+             background-size: 100% 100%;    
+             background-repeat: no-repeat;
+             width: 1000px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 3px solid black;
+        border-radius: 25px;
+
+      }
+      #jb-content {
+   background:url(minibar.png);
+             background-size: 100% 100%;    
+             background-repeat: no-repeat;
+             width: 1000px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 3px solid black;
+        border-radius: 25px;
+         
+      }    #jb-content2 {
+   background:url(minibar.png);
+             background-size: 100% 100%;    
+             background-repeat: no-repeat;
+             width: 1000px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 3px solid black;
+        border-radius: 25px;
+         
+      }
+      #jb-sidebar {
+        width: 670px;
+      
+        padding: 20px;
+        margin-right: 0px;
+        float: right;
+        border: 1px solid #484848;
+         border-radius: 25px;
+      }
+   
+      @media screen and (max-width:600px) {
+        #jb-header {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-content2 {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+
+    </style>
+
+
+  </head>
+
+
+
+
+
+  <!--body start -->
+  
+
+  <body>
+
+
+
+  <!--moniter talk box -->
+
+  <!--head section -->
+
+       <div id="jb-header">
+      
+     <p style="color:white;left:500%" > &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Ampulitede Modulation </p> 
+
+
+    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<button class="button1" type="button"  id="switch4" value="0" max= "1" >start</button>
+  <input class="button1" type="button"  value="Stop" onclick="qqqq();">
+   <button class="button1 button2" type="button"  id="switch4" value="0" max= "1" >what</button>
+   <button class="button1  button3"  onclick="text();">Talk</button>
+
+ <!-- <input class="button1" type="button" id="switch3" value="0" max= "0">  -->
+
+
+
+   
+<BR><BR>
+
+  
+    
+   
+ 
+
+
+
+<!--middle section -->
+
+ <div id="jb-content">
+      
+     <p style="color:white;" >    &nbsp;   &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  You can monitor your value of dial.</p> 
+     <BR><BR>
+     
+   <br><br><input class="ver" type="range"  style="position:absolute;left:0PX;top:250px" value="0" step="0.1" id = "specslider1" min="0" max="1.0" ></input>
+  <br><input class=" ver"type="range"  style="position:absolute;left:100px;top:250px" value="200" step="1" id = "specslider2" min="0" max="1000" ></input>
+ <br> <br><input class=" ver"type="range"  style="position:absolute;left:200px;top:250px" value="200" step="1" id = "specslider2" min="0" max="1000" ></input>
+
+
+</div>
+
+
+
+
+
+
+ <div id="jb-content2">
+  <br>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp; <button class="button1" type="button"  id="switch4" value="0" max= "1" >start</button>
+  <input class="button1" type="button"  value="Stop" onclick="qqqq();">
+   <button class="button1 button2" type="button"  id="switch4" value="0" max= "1" >what</button>
+   <button class="button1  button3"  onclick="text();">Talk</button>
+<br><br>
+       <p id="text1" style="color:white;display:inline-block;position:relative;left:20%; margin:0px;" > You can monitor your value of dial.</p>  
+
+        
+</div>
+ 
+<!--main door section -->
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
+  <div class="overlay-content">
+    <a href="#">Rhythm box </a>
+
+  </div>
+    
+</div>
+
+
+</body>
+
+
+<!--body end -->
+
+<!--socket.io & jquerry file -->
+
+
+
+
+<!--javascript start-->
+
+
+
+<!--main door setting -->
+
+<script>
+
+window.onload = function(){ 
+   //openNav();
+  //openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
+  <script >
+
+
+   
+ var socket = io();
+
+
+
+
+
+ function text() {
+
+        var text;
+
+        text = prompt(" hi Dr.Hong ");
+
+
+        socket.emit('10', text);
+
+    }
+
+
+    socket.on('10', function(text) {
+        document.getElementById("text").innerText = text;
+
+
+
+    });
+
+
+
+   var ver = document.getElementById('specslider1');
+       ver.addEventListener("change",knob0,false);
+       function knob0(data) {
+      str= 0;
+   str= data.target.value 
+ 
+
+             socket.emit('11', str);
+
+ }
+
+      socket.on('11',function(str){ 
+
+     //document.getElementById('').innerHTML = str ;
+     document.getElementById('specslider1').value = str ;
+
+
+
+});
+
+//////////////////////////////////
+
+
+          var ver1 = document.getElementById('specslider2');
+       ver1.addEventListener("change",knob1,false);
+       function knob1(data) {
+      str= 0;
+   str= data.target.value 
+    
+
+
+
+           socket.emit('12', str);
+ }
+
+      
+      socket.on('12',function(str){ 
+      osc.frequency.value  = str;
+     //document.getElementById('').innerHTML = str ;
+     document.getElementById('specslider2').value = str ;
+
+});
+
+
+
+ 
+
+  
+
+//////////////////////////////////// input socket network ////////////////////
+
+ //  var switch3 = document.getElementById('switch3');
+ //       switch3.addEventListener("click",ddd,false);
+
+
+//  function ddd(e) {
+//        str=1;
+ //     str = e.target.value
+
+ //     socket.emit('17', str);
+
+ //     }
+  //    socket.on('17', function(str){ 
+     
+
+ //     if(str=="0") {
+
+  //        aa();
+ //               }
+     
+  //    });
+
+
+  /////////////////////////////////////   button socket network ///////////
+
+
+
+    var switch4 = document.getElementById('switch4');
+        switch4.addEventListener("click",dd1,false);
+
+
+  function dd1(e) {
+        str=1;
+      str = e.target.value
+
+      socket.emit('18', str);
+
+  }
+      socket.on('18', function(str){ 
+     
+
+      if(str=="0") {
+
+          aa();
+                }
+     
+      });
+
+      ///////////////// socket off ////////
+
+    function qqqq(){
+         str = 7;
+
+
+       socket.emit('star', 'data');
+      }
+
+      socket.on('star', function(){ 
+
+
+            if(str=="7") {
+
+       bb();
+                }
+     
+      });
+
+      
+  
+
+
+
+
+
+
+  
+</script>
+
+ 
+
+
+</html>

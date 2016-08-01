@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+
+   <webaudio-switch id="switch1"   src="cont/img/switch_toggle.png"  value="0" max="1" width="54" height="54"></webaudio-switch>
+<h3  style="color:white;font-family:courier;position:absolute;left:50px;top:5px">Next</h3>
+</head>
+<style>
+h1 {
+    font-size: 900%;
+}
+h2 {
+    font-size: 500%;
+}
+
+</style>
+<style>
+  body {
+    background-color:#282828; 
+}
+</style>
+<body >
+\
+<div class="container">
+
+  <div class="row">
+ 
+    <div class="col-sm-4"  >
+  <font  style="position:absolute;top:10px;font-family:courier;" color="white"  >   Mar 15, 2016 | By Dr.Hong |  Interactive multi-media lab. </font>
+
+</font> 
+
+
+
+    </div>
+    <div class="col-sm-4">
+
+ 
+ <h1  style="color:white;font-family:impact;position:absolute;right:180px;top:110px">Dr.</h1>
+<h2  style="color:green;font-family:impact;position:absolute;right:140px;top:165px">H  </h>
+<h2  style="color:green;font-family:impact;position:absolute;right:0px;top:165px">ng  </h>  
+    <webaudio-knob id="knob1"   style="position:absolute;right:67px;top:0px" src="cont/img/vin.png" value="0" max="2000" step="1" diameter="80" sprites="100"  ></webaudio-knob>
+    
+
+  
+    </div>
+
+        <div class="col-sm-4">
+
+
+    <h3  style="color:gray;font-family:courier;position:relative;left:10%;top:300px;">Web-music programing | arduino | Interactive multi-media work </h3>
+  
+  
+    </div>
+  </div>
+</div>
+<script>
+
+
+    adsr();
+function adsr()  {
+
+var context = new (window.AudioContext)(); // Create audio container
+        osc = context.createOscillator(); // Create sound source
+        osc2 = context.createOscillator(); // Create sound source
+    
+        oscamp= context.createGain();
+        ampout= context.createGain();
+         amp2= context.createGain();
+        depth= context.createGain();
+
+    var b = depth  
+    var a = 1.00 - b;
+    var amp22 =  amp2.gain.value * a ;  
+         // Create gain node
+ 
+      osc.connect(oscamp); 
+      oscamp.connect(ampout);
+      ampout.connect(context.destination);
+
+      osc2.connect(amp2); 
+      amp2.connect(oscamp.gain);
+      depth.connect(oscamp.gain);
+
+
+       osc.frequency.value = 400;
+      osc2.frequency.value = 700;
+      ampout.gain.value = 0.0;
+        amp2.gain.value = 0.5;
+      depth.gain.value = 0.5;
+
+  
+ 
+ osc.start(); 
+ osc2.start(); 
+   }
+
+ </script>
+
+ <script >
+   
+    var knob1 = document.getElementById('knob1');
+       knob1.addEventListener("change",knob,false);
+
+       function knob(data) {
+        var str= 0;
+       str= data.target.value 
+        osc.frequency.value  = str;
+         ampout.gain.value  = str/20000;  }
+
+
+          var switch1 = document.getElementById('switch1');
+      switch1.addEventListener("change",switch11);
+
+       function switch11(e) {
+             if(e.target.value=="1") {
+       location.href = 'index.html';
+                }
+             if(e.target.value=="0") {
+               amp.disconnect(audioContext.destination);
+          } }
+
+
+
+       
+
+
+
+       
+</script>
+</body>
+</html>
