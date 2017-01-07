@@ -19,4 +19,4 @@ How to :  1. acccess above site main object and controller interface.
 video : https://www.youtube.com/watch?v=uZLOY8onwz4&feature=youtu.be
     
 
-you can see my web site  here  : drsax.kr
+you can see my web site  here  :https://drsax.kr
